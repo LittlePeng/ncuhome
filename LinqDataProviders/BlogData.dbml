@@ -1,0 +1,620 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="NCUHOME2006" Class="BlogDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=218.64.56.16;Initial Catalog=NCUHOME2006;User ID=sa" SettingsObjectName="Ncuhome.Blog.Data.Properties.Settings" SettingsPropertyName="NCUHOME2006ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Weblog_Comment" Member="Weblog_Comments">
+    <Type Name="Weblog_Comment">
+      <Column Name="Comment_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Comment_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment_LogId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment_Content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Comment_ToCommentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment_CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Comment_LastModiTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Comment_LogTempId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment_UserTempId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment_TempId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment_UserTempName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comment_GuestName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_ViewLog" Member="Weblog_ViewLogs">
+    <Type Name="Weblog_ViewLog">
+      <Column Name="ViewLog_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ViewLog_UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ViewLog_LogId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ViewLog_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_FreshContent" Member="Weblog_FreshContents">
+    <Type Name="Weblog_FreshContent">
+      <Column Name="FC_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FC_FDId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FC_UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FC_Title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FC_Url" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FC_TypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FC_FromUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_FreshDescrible" Member="Weblog_FreshDescribles">
+    <Type Name="Weblog_FreshDescrible">
+      <Column Name="FD_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FD_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_FreshType" Member="Weblog_FreshTypes">
+    <Type Name="Weblog_FreshType">
+      <Column Name="FT_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FT_Name" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_FreshVisit" Member="Weblog_FreshVisits">
+    <Type Name="Weblog_FreshVisit">
+      <Column Name="FV_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FV_FCId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FV_FriendUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FV_VisiteTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FV_IsVisite" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_Group" Member="Weblog_Groups">
+    <Type Name="Weblog_Group">
+      <Column Name="Group_Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Group_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Group_FounderId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Group_AdministratorsCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Group_MembersCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Group_TopicCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Group_Url" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Group_ImageUrl" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Group_Keywords" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Group_Introduce" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Group_Notice" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Group_ClassId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Group_Competence" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Group_IsViewByStrangers" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Group_IsCertificateWhileJoin" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Group_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_GroupClass" Member="Weblog_GroupClasses">
+    <Type Name="Weblog_GroupClass">
+      <Column Name="GroupClass_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupClass_Name" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupClass_GroupCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_GroupComment" Member="Weblog_GroupComments">
+    <Type Name="Weblog_GroupComment">
+      <Column Name="GC_Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GC_UserId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GC_ToCommentId" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="GC_LogId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GC_Content" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="GC_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GC_GroupTopicId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_GroupMember" Member="Weblog_GroupMembers">
+    <Type Name="Weblog_GroupMember">
+      <Column Name="GM_Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GM_UserId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GM_TopicCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GM_CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GM_JoinTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GM_LastLoginTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GM_ViewCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GM_Level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GM_IsBlocked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GM_GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_GroupTopic" Member="Weblog_GroupTopics">
+    <Type Name="Weblog_GroupTopic">
+      <Column Name="GT_Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GT_UserId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GT_Title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="GT_Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="GT_Class" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="GT_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GT_LastModiTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GT_ViewCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GT_IsTop" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GT_CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GT_GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_GroupVisitor" Member="Weblog_GroupVisitors">
+    <Type Name="Weblog_GroupVisitor">
+      <Column Name="GV_Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GV_UserId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GV_LastViewTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="GV_GroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_Link" Member="Weblog_Links">
+    <Type Name="Weblog_Link">
+      <Column Name="Link_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Link_UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Link_Content" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_Relative" Member="Weblog_Relatives">
+    <Type Name="Weblog_Relative">
+      <Column Name="Relative_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Relative_UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Relative_LogId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Relative_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_FreshInfor" Member="View_FreshInfors">
+    <Type Name="View_FreshInfor">
+      <Column Name="FD_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FD_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FT_Name" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="FT_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FC_UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FC_Title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FC_Url" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FV_VisiteTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FV_IsVisite" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FC_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FV_FriendUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="User_NickName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_TxzId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_FIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FC_FromUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_GetCommentInforByLogId" Member="View_GetCommentInforByLogIds">
+    <Type Name="View_GetCommentInforByLogId">
+      <Column Name="Log_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="User_TxzId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_NickName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comment_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comment_Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Comment_ToCommentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_FIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment_UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Comment_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Log_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_PortraitUrl" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Log_Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Log_IsVisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsDraft" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="User_DomainName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="User_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_BeViewCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_MessageCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_Number" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="User_LoginTimes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="User_IsPrivate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="User_CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_LogCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_RecommendCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_ViewCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Log_Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Log_IsEnRePly" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsTop" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_GetFriendLogByUserId" Member="View_GetFriendLogByUserIds">
+    <Type Name="View_GetFriendLogByUserId">
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="User_NickName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_TxzId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Log_Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Log_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Log_IsVisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsDraft" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_GetUserNickNameByLogId" Member="View_GetUserNickNameByLogIds">
+    <Type Name="View_GetUserNickNameByLogId">
+      <Column Name="User_NickName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Log_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_TxzId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Log_Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Log_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Log_Class" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_CommonFunction" Member="View_CommonFunctions">
+    <Type Name="View_CommonFunction">
+      <Column Name="Mod_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Mod_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="FI_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FI_FuncID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FI_OwnerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FI_MODID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Func_Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Func_ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="FUNC_ISROOT" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Common_Friend" Member="Common_Friends">
+    <Type Name="Common_Friend">
+      <Column Name="Frd_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Frd_TxzUID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Frd_FriendUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Frd_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Frd_UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_WeblogCssFilePath" Member="View_WeblogCssFilePaths">
+    <Type Name="View_WeblogCssFilePath">
+      <Column Name="CssFile_Path" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserCss_Used" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_UserCss" Member="Weblog_UserCsses">
+    <Type Name="Weblog_UserCss">
+      <Column Name="UserCss_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserCss_CssFileId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="UserCss_Used" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UserCss_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_Theme" Member="Weblog_Themes">
+    <Type Name="Weblog_Theme">
+      <Column Name="Theme_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Theme_Name" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="Theme_Intro" Type="System.String" DbType="NChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_WeblogThemeDetail" Member="View_WeblogThemeDetails">
+    <Type Name="View_WeblogThemeDetail">
+      <Column Name="CssFile_Path" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="UserCss_Used" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CssFile_Name" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="CssFile_Intro" Type="System.String" DbType="NChar(500)" CanBeNull="true" />
+      <Column Name="CssFile_CreateTile" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CssFile_CreateUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Theme_Name" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="Theme_Intro" Type="System.String" DbType="NChar(500)" CanBeNull="true" />
+      <Column Name="Theme_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CssFile_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CssFile_IndexPicPath" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_CssFile" Member="Weblog_CssFiles">
+    <Type Name="Weblog_CssFile">
+      <Column Name="CssFile_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CssFile_Name" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="CssFile_Intro" Type="System.String" DbType="NChar(500)" CanBeNull="true" />
+      <Column Name="CssFile_ThemeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CssFile_CreateTile" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CssFile_Path" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="CssFile_CreateUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CssFile_IndexPicPath" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_WeblogThemeCssFile" Member="View_WeblogThemeCssFiles">
+    <Type Name="View_WeblogThemeCssFile">
+      <Column Name="Theme_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CssFile_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CssFile_Intro" Type="System.String" DbType="NChar(500)" CanBeNull="true" />
+      <Column Name="CssFile_Name" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="CssFile_CreateTile" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CssFile_Path" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+      <Column Name="CssFile_CreateUserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Theme_Name" Type="System.String" DbType="NChar(50)" CanBeNull="true" />
+      <Column Name="Theme_Intro" Type="System.String" DbType="NChar(500)" CanBeNull="true" />
+      <Column Name="CssFile_IndexPicPath" Type="System.String" DbType="NChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_WeblogUserComment" Member="View_WeblogUserComments">
+    <Type Name="View_WeblogUserComment">
+      <Column Name="User_NickName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_PortraitUrl" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_FIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_DomainName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="User_Movie" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Music" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Book" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Interest" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_HomePage" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="User_QQ" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_MSN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Comment_LogId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment_Content" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Comment_ToCommentId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment_CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Comment_LastModiTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Comment_GuestName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Comment_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Comment_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_WeblogUserXSJBXX" Member="View_WeblogUserXSJBXXes">
+    <Type Name="View_WeblogUserXSJBXX">
+      <Column Name="XH" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="XM" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CYM" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="XMPY" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="XFZXSZK" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="HDXLFSM" Type="System.Char" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="XZ" Type="System.Decimal" DbType="Decimal(3,1)" CanBeNull="true" />
+      <Column Name="RXNY" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="NJ" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="BH" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="SFZH" Type="System.String" DbType="NVarChar(18)" CanBeNull="true" />
+      <Column Name="CSRQ" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="CSDM" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="ZJXY" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="LXDH" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="TXDZ" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="YZBM" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="DZXX" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZYDZ" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="QSH" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="ZYMC" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="YXSMC" Type="System.String" DbType="NVarChar(60)" CanBeNull="true" />
+      <Column Name="BJMC" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="XB" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MC" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ZZMMM" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="ZZMM" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="MZ" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="XSLY" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="SF" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Expr31" Type="System.String" DbType="NVarChar(14)" CanBeNull="true" />
+      <Column Name="JGM" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="YXSH" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="ZYH" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="User_TxzId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_NickName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_LogCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_QQ" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_CellPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_FixedPhone" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="User_HomePage" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="User_Book" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Interest" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_MSN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_Music" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Movie" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Amimation" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Game" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_League" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Doodle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="User_PortraitUrl" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="User_FIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_LoginTimes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_IsPrivate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="User_tempID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_Sport" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_MessageCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_BeViewCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_DomainName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="User_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_Category" Member="Weblog_Category">
+    <Type Name="Weblog_Category">
+      <Column Name="Cate_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Cate_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cate_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cate_CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Cate_Intro" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_WeblogLogCategory" Member="View_WeblogLogCategory">
+    <Type Name="View_WeblogLogCategory">
+      <Column Name="Log_CateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Log_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Log_Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Log_Class" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Log_LastModiTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Log_ViewCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_RecommendCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_IsVisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsDraft" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsEnRePly" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IP" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Log_IsTop" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsPasssword" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_PassWord" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Log_KeyWords" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Log_AllowComment" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Cate_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cate_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cate_CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Cate_Intro" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_WeblogUserLogCategory" Member="View_WeblogUserLogCategory">
+    <Type Name="View_WeblogUserLogCategory">
+      <Column Name="Cate_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Cate_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cate_CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Cate_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cate_Intro" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="Log_Count" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_BlogUserFriend" Member="View_BlogUserFriend">
+    <Type Name="View_BlogUserFriend">
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Frd_UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Frd_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Frd_TxzUID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Frd_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="User_NickName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_DomainName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="User_PortraitUrl" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_FIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_User" Member="Weblog_User">
+    <Type Name="Weblog_User">
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="User_TxzId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_NickName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_LogCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_QQ" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_MSN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_CellPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_FixedPhone" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="User_HomePage" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="User_Interest" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Book" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Music" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Movie" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Amimation" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Game" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_League" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_Doodle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="User_PortraitUrl" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="User_FIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_LoginTimes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_IsPrivate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="User_Number" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="User_tempID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_Sport" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_MessageCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_BeViewCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="User_DomainName" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="User_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="User_BeViewLastTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_Notice" Member="Weblog_Notice">
+    <Type Name="Weblog_Notice">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Notice_Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Notice_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Notice_IsTop" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Notice_Type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_WeblogUserRecommend" Member="View_WeblogUserRecommend">
+    <Type Name="View_WeblogUserRecommend">
+      <Column Name="Recommend_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Recommend_LogId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Recommend_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="User_NickName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="User_PortraitUrl" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Log_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Log_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Log_Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Log_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Log_ViewCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_RecommendCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_IsVisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="User_FIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="User_DomainName" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Log_IsPasssword" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsDraft" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Recommend_ThemeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_RecommendTheme" Member="Weblog_RecommendTheme">
+    <Type Name="Weblog_RecommendTheme">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Reco_Title" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Reco_Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Reco_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Reco_Visible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_Recommend" Member="Weblog_Recommend">
+    <Type Name="Weblog_Recommend">
+      <Column Name="Recommend_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Recommend_LogId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Recommend_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Recommend_ThemeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_UserRssLink" Member="Weblog_UserRssLink">
+    <Type Name="Weblog_UserRssLink">
+      <Column Name="Weblog_UserRssLinkId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Weblog_UserRssLinkUrl" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Weblog_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Weblog_UserRssIsPassed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Weblog_Log" Member="Weblog_Log">
+    <Type Name="Weblog_Log">
+      <Column Name="Log_Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Log_UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Log_Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Log_Class" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Log_LastModiTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Log_ViewCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_RecommendCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_IsVisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsDraft" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IP" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Log_IsEnRePly" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsTop" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_tempUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_TempID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_IsPasssword" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_PassWord" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Log_CateId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_KeyWords" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Log_AllowComment" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsIndexShow" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.View_WeblogUserLog" Member="View_WeblogUserLog">
+    <Type Name="View_WeblogUserLog">
+      <Column Name="User_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="User_NickName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="User_QQ" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_MSN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_CellPhone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_FixedPhone" Type="System.String" DbType="NChar(12)" CanBeNull="true" />
+      <Column Name="User_HomePage" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="User_Interest" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="User_PortraitUrl" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="User_DomainName" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="User_Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Log_Id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Log_Title" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Log_Content" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Log_Class" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_CreateTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Log_LastModiTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Log_ViewCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_CommentCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_RecommendCount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Log_IsVisible" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsDraft" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IP" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Log_IsEnRePly" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Log_IsTop" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="User_FIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Log_IsPasssword" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="User_TxzId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Log_IsIndexShow" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

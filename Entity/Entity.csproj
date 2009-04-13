@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E43731C3-00D9-4532-A67D-97CF05906BB1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ncuhome.Blog.Entity</RootNamespace>
+    <AssemblyName>Ncuhome.Blog.Entity</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common_Friend.cs" />
+    <Compile Include="Common_Friend.Generated.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View_BlogUserFriend.cs" />
+    <Compile Include="View_BlogUserFriend.Generated.cs" />
+    <Compile Include="View_CommonFunction.cs" />
+    <Compile Include="View_CommonFunction.Generated.cs" />
+    <Compile Include="View_FreshInfor.cs" />
+    <Compile Include="View_FreshInfor.Generated.cs" />
+    <Compile Include="View_GetCommentInforByLogId.cs" />
+    <Compile Include="View_GetCommentInforByLogId.Generated.cs" />
+    <Compile Include="View_GetFriendLogByUserId.cs" />
+    <Compile Include="View_GetFriendLogByUserId.Generated.cs" />
+    <Compile Include="View_GetUserNickNameByLogId.cs" />
+    <Compile Include="View_GetUserNickNameByLogId.Generated.cs" />
+    <Compile Include="View_WeblogCssFilePath.cs" />
+    <Compile Include="View_WeblogCssFilePath.Generated.cs" />
+    <Compile Include="View_WeblogLogCategory.cs" />
+    <Compile Include="View_WeblogLogCategory.Generated.cs" />
+    <Compile Include="View_WeblogThemeCssFile.cs" />
+    <Compile Include="View_WeblogThemeCssFile.Generated.cs" />
+    <Compile Include="View_WeblogThemeDetail.cs" />
+    <Compile Include="View_WeblogThemeDetail.Generated.cs" />
+    <Compile Include="View_WeblogUserComment.cs" />
+    <Compile Include="View_WeblogUserComment.Generated.cs" />
+    <Compile Include="View_WeblogUserLog.cs" />
+    <Compile Include="View_WeblogUserLog.Generated.cs" />
+    <Compile Include="View_WeblogUserLogCategory.cs" />
+    <Compile Include="View_WeblogUserLogCategory.Generated.cs" />
+    <Compile Include="View_WeblogUserRecommend.cs" />
+    <Compile Include="View_WeblogUserRecommend.Generated.cs" />
+    <Compile Include="View_WeblogUserXSJBXX.cs" />
+    <Compile Include="View_WeblogUserXSJBXX.Generated.cs" />
+    <Compile Include="Weblog_Category.cs" />
+    <Compile Include="Weblog_Category.Generated.cs" />
+    <Compile Include="Weblog_Comment.cs" />
+    <Compile Include="Weblog_Comment.Generated.cs" />
+    <Compile Include="Weblog_CssFile.cs" />
+    <Compile Include="Weblog_CssFile.Generated.cs" />
+    <Compile Include="Weblog_FreshContent.cs" />
+    <Compile Include="Weblog_FreshContent.Generated.cs" />
+    <Compile Include="Weblog_FreshDescrible.cs" />
+    <Compile Include="Weblog_FreshDescrible.Generated.cs" />
+    <Compile Include="Weblog_FreshType.cs" />
+    <Compile Include="Weblog_FreshType.Generated.cs" />
+    <Compile Include="Weblog_FreshVisit.cs" />
+    <Compile Include="Weblog_FreshVisit.Generated.cs" />
+    <Compile Include="Weblog_Group.cs" />
+    <Compile Include="Weblog_Group.Generated.cs" />
+    <Compile Include="Weblog_GroupClass.cs" />
+    <Compile Include="Weblog_GroupClass.Generated.cs" />
+    <Compile Include="Weblog_GroupComment.cs" />
+    <Compile Include="Weblog_GroupComment.Generated.cs" />
+    <Compile Include="Weblog_GroupMember.cs" />
+    <Compile Include="Weblog_GroupMember.Generated.cs" />
+    <Compile Include="Weblog_GroupTopic.cs" />
+    <Compile Include="Weblog_GroupTopic.Generated.cs" />
+    <Compile Include="Weblog_GroupVisitor.cs" />
+    <Compile Include="Weblog_GroupVisitor.Generated.cs" />
+    <Compile Include="Weblog_Link.cs" />
+    <Compile Include="Weblog_Link.Generated.cs" />
+    <Compile Include="Weblog_Log.cs" />
+    <Compile Include="Weblog_Log.Generated.cs" />
+    <Compile Include="Weblog_Notice.cs" />
+    <Compile Include="Weblog_Notice.Generated.cs" />
+    <Compile Include="Weblog_Recommend.cs" />
+    <Compile Include="Weblog_Recommend.Generated.cs" />
+    <Compile Include="Weblog_RecommendTheme.cs" />
+    <Compile Include="Weblog_RecommendTheme.Generated.cs" />
+    <Compile Include="Weblog_Relative.cs" />
+    <Compile Include="Weblog_Relative.Generated.cs" />
+    <Compile Include="Weblog_Theme.cs" />
+    <Compile Include="Weblog_Theme.Generated.cs" />
+    <Compile Include="Weblog_User.cs" />
+    <Compile Include="Weblog_User.Generated.cs" />
+    <Compile Include="Weblog_UserCss.cs" />
+    <Compile Include="Weblog_UserCss.Generated.cs" />
+    <Compile Include="Weblog_UserRssLink.cs" />
+    <Compile Include="Weblog_UserRssLink.Generated.cs" />
+    <Compile Include="Weblog_ViewLog.cs" />
+    <Compile Include="Weblog_ViewLog.Generated.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

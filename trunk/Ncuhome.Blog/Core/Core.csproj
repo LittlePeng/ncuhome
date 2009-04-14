@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E6BF4CE0-771A-485A-A6AB-EC0BB0F39189}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ncuhome.Blog.Core</RootNamespace>
+    <AssemblyName>Ncuhome.Blog.Core</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ncuhome.Login, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Blog\bin\Ncuhome.Login.dll</HintPath>
+    </Reference>
+    <Reference Include="RSS.NET, Version=0.86.3181.30430, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Blog\bin\RSS.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BlogCommon.cs" />
+    <Compile Include="BlogContext.cs" />
+    <Compile Include="BlogTables\BCommon_Friend.cs" />
+    <Compile Include="BlogTables\BMail.cs" />
+    <Compile Include="BlogTables\BView_GetUserNickNameByLogId.cs" />
+    <Compile Include="BlogTables\BlogTableBase.cs" />
+    <Compile Include="BlogTables\BNotice.cs" />
+    <Compile Include="BlogTables\BView_BlogUserFriend.cs" />
+    <Compile Include="BlogTables\BView_GetCommentInfoByLogId.cs" />
+    <Compile Include="BlogTables\BView_WeblogCssFilePath.cs" />
+    <Compile Include="BlogTables\BView_WeblogLogCategory.cs" />
+    <Compile Include="BlogTables\BView_WeblogThemeCssFile.cs" />
+    <Compile Include="BlogTables\BView_WeblogThemeDetail.cs" />
+    <Compile Include="BlogTables\BView_WeblogUserLog.cs" />
+    <Compile Include="BlogTables\BView_WeblogUserRecommend.cs" />
+    <Compile Include="BlogTables\BView_WeblogUserXSJBXX.cs" />
+    <Compile Include="BlogTables\BWeblog_Category.cs" />
+    <Compile Include="BlogTables\BWeblog_CssFile.cs" />
+    <Compile Include="BlogTables\BWeblog_Group.cs" />
+    <Compile Include="BlogTables\BWebLog_Link.cs" />
+    <Compile Include="BlogTables\BWeblog_log.cs" />
+    <Compile Include="BlogTables\BGbook.cs" />
+    <Compile Include="BlogTables\BWeblog_Comment.cs" />
+    <Compile Include="BlogTables\BWeblog_Notice.cs" />
+    <Compile Include="BlogTables\BWeblog_Recommend.cs" />
+    <Compile Include="BlogTables\BWeblog_RecommendTheme.cs" />
+    <Compile Include="BlogTables\BWeblog_Theme.cs" />
+    <Compile Include="BlogTables\BWeblog_User.cs" />
+    <Compile Include="BlogTables\BView_CommonFunction.cs" />
+    <Compile Include="BlogTables\BWeblog_UserCss.cs" />
+    <Compile Include="BlogTables\BWeblog_UserRssLink.cs" />
+    <Compile Include="BlogTables\BWebLog_ViewLog.cs" />
+    <Compile Include="BlogTables\BView_WeblogUserComment.cs" />
+    <Compile Include="BlogTables\BView_WeblogUserLogCategory.cs" />
+    <Compile Include="BlogUser.cs" />
+    <Compile Include="BGDXSJBXX.cs" />
+    <Compile Include="DefaultPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dynamic.cs" />
+    <Compile Include="Encrypt.cs" />
+    <Compile Include="Globals.cs" />
+    <Compile Include="HTTPModules\ActiveBlogUser.cs" />
+    <Compile Include="HTTPModules\SummaryVisitModule.cs" />
+    <Compile Include="IBlogTables\IBCommon_Friend.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SummaryVisit.cs" />
+    <Compile Include="Web References\ActiveServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\clubNewsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\FuncCommonReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\GbookReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\MailServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\NoticeReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WebReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{E43731C3-00D9-4532-A67D-97CF05906BB1}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LinqDataProviders\LinqDataProviders.csproj">
+      <Project>{C4A842FA-4E88-49C4-9D79-2DC5E40D34A6}</Project>
+      <Name>LinqDataProviders</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://218.64.56.9:8995/ActiveServices.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ActiveServices\</RelPath>
+      <UpdateFromURL>http://218.64.56.9:8995/ActiveServices.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Blog_Core_ActiveServices_ActiveServices</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://218.64.56.9:8995/FuncCommonService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\FuncCommonReference\</RelPath>
+      <UpdateFromURL>http://218.64.56.9:8995/FuncCommonService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Blog_Core_FuncCommonReference_FuncCommonService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://218.64.56.9:8995/MailServices.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\MailServices\</RelPath>
+      <UpdateFromURL>http://218.64.56.9:8995/MailServices.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Ncuhome_Blog_Core_MailServices_MailServices</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://218.64.56.9:8995/NoticeService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\NoticeReference\</RelPath>
+      <UpdateFromURL>http://218.64.56.9:8995/NoticeService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Blog_Core_NoticeReference_NoticeService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://218.64.56.9:8995/SummaryVisitService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WebReference\</RelPath>
+      <UpdateFromURL>http://218.64.56.9:8995/SummaryVisitService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Blog_Core_WebReference_SummaryVisitService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://club.ncuhome.cn/NewsService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\clubNewsService\</RelPath>
+      <UpdateFromURL>http://club.ncuhome.cn/NewsService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Ncuhome_Blog_Core_clubNewsService_NewsService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://gbook.ncuhome.cn/Gbookwebservice.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\GbookReference\</RelPath>
+      <UpdateFromURL>http://gbook.ncuhome.cn/Gbookwebservice.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Blog_Core_GbookReference_GbookWebService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\GbookReference\Gbookwebservice.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\GbookReference\Gbookwebservice.disco" />
+    <None Include="Web References\GbookReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\NoticeReference\NoticeService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\NoticeReference\NoticeService.disco" />
+    <None Include="Web References\NoticeReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WebReference\SummaryVisitService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WebReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WebReference\SummaryVisitService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\ActiveServices\ActiveServices.wsdl" />
+    <None Include="Web References\FuncCommonReference\FuncCommonService.disco" />
+    <None Include="Web References\FuncCommonReference\FuncCommonService.wsdl" />
+    <None Include="Web References\FuncCommonReference\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\ActiveServices\ActiveReturnValue1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ActiveServices\ActiveServices.disco" />
+    <None Include="Web References\ActiveServices\Func1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\ActiveServices\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\FuncCommonReference\BJJBXX1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\FuncCommonReference\UserProfile1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\FuncCommonReference\XSJBXX1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GbookReference\Common_Message1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GbookReference\Gbook1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GbookReference\View_CommonFunction1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MailServices\MailServices.wsdl" />
+    <None Include="Web References\NoticeReference\Notice1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\WebReference\Common_SummaryVisit1.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\clubNewsService\NewsService.wsdl" />
+    <None Include="Web References\MailServices\InBox.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\MailServices\MailServices.disco" />
+    <None Include="Web References\MailServices\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\MailServices\SendeBox.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\clubNewsService\NewsService.disco" />
+    <None Include="Web References\clubNewsService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\clubNewsService\View_NewsType.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

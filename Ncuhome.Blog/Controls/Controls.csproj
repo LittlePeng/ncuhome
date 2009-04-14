@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{893AEDB3-2E54-40D8-B8D3-7CDFC42B5F7D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ncuhome.Blog.Controls</RootNamespace>
+    <AssemblyName>Ncuhome.Blog.Controls</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Ncuhome.Login, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Blog\bin\Ncuhome.Login.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebHtmlEditor1.7, Version=1.7.2006.1020, Culture=neutral, PublicKeyToken=5cf74b582a7bc9ad, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Blog\bin\WebHtmlEditor1.7.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddBook.cs" />
+    <Compile Include="AddComment.cs" />
+    <Compile Include="AddLog.cs" />
+    <Compile Include="BlogStar.cs" />
+    <Compile Include="Calendars.cs" />
+    <Compile Include="LogCategory.cs" />
+    <Compile Include="Manage\AddBlogNotice.cs" />
+    <Compile Include="Manage\AddLog.cs" />
+    <Compile Include="Manage\BlogNotice.cs" />
+    <Compile Include="Manage\Bottom.cs" />
+    <Compile Include="Manage\Category.cs" />
+    <Compile Include="Manage\Manage_Notice.cs" />
+    <Compile Include="Manage\Recommend.cs" />
+    <Compile Include="Manage\ShowRecommend.cs" />
+    <Compile Include="Manage\ShowRecommend2.cs" />
+    <Compile Include="Page\friend_Form.cs" />
+    <Compile Include="Page\friend_Head.cs" />
+    <Compile Include="GoodLog.cs" />
+    <Compile Include="Manage\AddFriend.cs" />
+    <Compile Include="Manage\AddFriend_Form.cs" />
+    <Compile Include="Manage\BlogConfig.cs" />
+    <Compile Include="Manage\Comments.cs" />
+    <Compile Include="Manage\EditLog.cs" />
+    <Compile Include="Manage\Friend.cs" />
+    <Compile Include="Manage\Login.cs" />
+    <Compile Include="Manage\LogList.cs" />
+    <Compile Include="BaseClass\SkinnedBlogWebControl.cs" />
+    <Compile Include="Comments.cs" />
+    <Compile Include="CommonListPaged.cs" />
+    <Compile Include="DefaultLogs.cs" />
+    <Compile Include="Friend.cs" />
+    <Compile Include="Friends.cs" />
+    <Compile Include="Gbook.cs" />
+    <Compile Include="Index_FriList.cs" />
+    <Compile Include="Index_UserInfo.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="LogList.cs" />
+    <Compile Include="LogNav.cs" />
+    <Compile Include="Manage\Manage_Nav.cs" />
+    <Compile Include="Manage\Manage_SelectCss.cs" />
+    <Compile Include="Manage\Manage_Sidebar.cs" />
+    <Compile Include="Manage\Message.cs" />
+    <Compile Include="Manage\MessageDetail.cs" />
+    <Compile Include="Manage\SendBox.cs" />
+    <Compile Include="Manage\UserInfo.cs" />
+    <Compile Include="Nav.cs" />
+    <Compile Include="NewestComment.cs" />
+    <Compile Include="NewestLog.cs" />
+    <Compile Include="Page\AddLog_Form.cs" />
+    <Compile Include="Page\AddLog_Head.cs" />
+    <Compile Include="Page\Comment_Form.cs" />
+    <Compile Include="Page\Comment_Head.cs" />
+    <Compile Include="Page\Default_Ower_Form.cs" />
+    <Compile Include="Page\Default_Ower_Head.cs" />
+    <Compile Include="Page\GuestBook_Form.cs" />
+    <Compile Include="Page\GuestBook_Head.cs" />
+    <Compile Include="Page\Index_Form.cs" />
+    <Compile Include="Page\Index_Head.cs" />
+    <Compile Include="Page\Log_Form.cs" />
+    <Compile Include="Page\Log_Head.cs" />
+    <Compile Include="Page\UserHead.cs" />
+    <Compile Include="Page\VisitStat.cs" />
+    <Compile Include="Post.cs" />
+    <Compile Include="Posts.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SearchFriend.cs" />
+    <Compile Include="SearchLog.cs" />
+    <Compile Include="SelectCss.cs" />
+    <Compile Include="SelectTheme.cs" />
+    <Compile Include="Top.cs" />
+    <Compile Include="UserInfor.cs" />
+    <Compile Include="UserInfor_Form.cs" />
+    <Compile Include="UserInfor_Head.cs" />
+    <Compile Include="Web References\uploadservice\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{E6BF4CE0-771A-485A-A6AB-EC0BB0F39189}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{E43731C3-00D9-4532-A67D-97CF05906BB1}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\uploadservice\upload.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Ncuhome.Login.dll" />
+    <None Include="Web References\uploadservice\NcuFileInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\uploadservice\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\uploadservice\upload.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://resource.ncuhome.cn/upload.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\uploadservice\</RelPath>
+      <UpdateFromURL>http://resource.ncuhome.cn/upload.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Ncuhome_Blog_Controls_uploadservice_Upload</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Manager\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

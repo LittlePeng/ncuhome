@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FromTxzID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="TotxzID" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="TypeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UrlID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddNewsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateNotice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fiid" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateNoticeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateNoticeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNotice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fiid" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="content" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddNoticeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddNoticeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="login" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLatestNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pageSize" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="pageIndex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLatestNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLatestNewsResult" type="tns:ArrayOfView_NewsType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfView_NewsType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="View_NewsType" nillable="true" type="tns:View_NewsType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="View_NewsType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Type_ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type_Action" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Type_Url" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="News_ID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="News_FromTxzID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="News_ToTxzID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="News_Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="News_Content" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="News_UrlTypeID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="News_UrlID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="News_CreateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="News_IsNew" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="ArrayOfView_NewsType" nillable="true" type="tns:ArrayOfView_NewsType" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:AddNews" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:AddNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNoticeSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateNotice" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNoticeSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateNoticeResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddNoticeSoapIn">
+    <wsdl:part name="parameters" element="tns:AddNotice" />
+  </wsdl:message>
+  <wsdl:message name="AddNoticeSoapOut">
+    <wsdl:part name="parameters" element="tns:AddNoticeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLatestNews" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLatestNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetIn" />
+  <wsdl:message name="HelloWorldHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsHttpGetIn">
+    <wsdl:part name="FromTxzID" type="s:string" />
+    <wsdl:part name="TotxzID" type="s:string" />
+    <wsdl:part name="Title" type="s:string" />
+    <wsdl:part name="Content" type="s:string" />
+    <wsdl:part name="TypeID" type="s:string" />
+    <wsdl:part name="UrlID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNoticeHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="fiid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNoticeHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AddNoticeHttpGetIn">
+    <wsdl:part name="fiid" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNoticeHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoHttpGetIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="login" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestNewsHttpGetIn">
+    <wsdl:part name="pageSize" type="s:string" />
+    <wsdl:part name="pageIndex" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestNewsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfView_NewsType" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostIn" />
+  <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsHttpPostIn">
+    <wsdl:part name="FromTxzID" type="s:string" />
+    <wsdl:part name="TotxzID" type="s:string" />
+    <wsdl:part name="Title" type="s:string" />
+    <wsdl:part name="Content" type="s:string" />
+    <wsdl:part name="TypeID" type="s:string" />
+    <wsdl:part name="UrlID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNewsHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNoticeHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+    <wsdl:part name="fiid" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UpdateNoticeHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AddNoticeHttpPostIn">
+    <wsdl:part name="fiid" type="s:string" />
+    <wsdl:part name="content" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AddNoticeHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoHttpPostIn">
+    <wsdl:part name="id" type="s:string" />
+    <wsdl:part name="login" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestNewsHttpPostIn">
+    <wsdl:part name="pageSize" type="s:string" />
+    <wsdl:part name="pageIndex" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestNewsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfView_NewsType" />
+  </wsdl:message>
+  <wsdl:portType name="NewsServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <wsdl:input message="tns:AddNewsSoapIn" />
+      <wsdl:output message="tns:AddNewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNotice">
+      <wsdl:input message="tns:UpdateNoticeSoapIn" />
+      <wsdl:output message="tns:UpdateNoticeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNotice">
+      <wsdl:input message="tns:AddNoticeSoapIn" />
+      <wsdl:output message="tns:AddNoticeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <wsdl:input message="tns:GetUserInfoSoapIn" />
+      <wsdl:output message="tns:GetUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestNews">
+      <wsdl:input message="tns:GetLatestNewsSoapIn" />
+      <wsdl:output message="tns:GetLatestNewsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="NewsServiceHttpGet">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpGetIn" />
+      <wsdl:output message="tns:HelloWorldHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <wsdl:input message="tns:AddNewsHttpGetIn" />
+      <wsdl:output message="tns:AddNewsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNotice">
+      <wsdl:input message="tns:UpdateNoticeHttpGetIn" />
+      <wsdl:output message="tns:UpdateNoticeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNotice">
+      <wsdl:input message="tns:AddNoticeHttpGetIn" />
+      <wsdl:output message="tns:AddNoticeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <wsdl:input message="tns:GetUserInfoHttpGetIn" />
+      <wsdl:output message="tns:GetUserInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestNews">
+      <wsdl:input message="tns:GetLatestNewsHttpGetIn" />
+      <wsdl:output message="tns:GetLatestNewsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="NewsServiceHttpPost">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpPostIn" />
+      <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <wsdl:input message="tns:AddNewsHttpPostIn" />
+      <wsdl:output message="tns:AddNewsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNotice">
+      <wsdl:input message="tns:UpdateNoticeHttpPostIn" />
+      <wsdl:output message="tns:UpdateNoticeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNotice">
+      <wsdl:input message="tns:AddNoticeHttpPostIn" />
+      <wsdl:output message="tns:AddNoticeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <wsdl:input message="tns:GetUserInfoHttpPostIn" />
+      <wsdl:output message="tns:GetUserInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestNews">
+      <wsdl:input message="tns:GetLatestNewsHttpPostIn" />
+      <wsdl:output message="tns:GetLatestNewsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NewsServiceSoap" type="tns:NewsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <soap:operation soapAction="http://tempuri.org/AddNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNotice">
+      <soap:operation soapAction="http://tempuri.org/UpdateNotice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNotice">
+      <soap:operation soapAction="http://tempuri.org/AddNotice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap:operation soapAction="http://tempuri.org/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestNews">
+      <soap:operation soapAction="http://tempuri.org/GetLatestNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NewsServiceSoap12" type="tns:NewsServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <soap12:operation soapAction="http://tempuri.org/AddNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNotice">
+      <soap12:operation soapAction="http://tempuri.org/UpdateNotice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNotice">
+      <soap12:operation soapAction="http://tempuri.org/AddNotice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestNews">
+      <soap12:operation soapAction="http://tempuri.org/GetLatestNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NewsServiceHttpGet" type="tns:NewsServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <http:operation location="/AddNews" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNotice">
+      <http:operation location="/UpdateNotice" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNotice">
+      <http:operation location="/AddNotice" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <http:operation location="/GetUserInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestNews">
+      <http:operation location="/GetLatestNews" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NewsServiceHttpPost" type="tns:NewsServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="HelloWorld">
+      <http:operation location="/HelloWorld" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNews">
+      <http:operation location="/AddNews" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNotice">
+      <http:operation location="/UpdateNotice" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNotice">
+      <http:operation location="/AddNotice" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <http:operation location="/GetUserInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestNews">
+      <http:operation location="/GetLatestNews" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NewsService">
+    <wsdl:port name="NewsServiceSoap" binding="tns:NewsServiceSoap">
+      <soap:address location="http://club.ncuhome.cn/NewsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NewsServiceSoap12" binding="tns:NewsServiceSoap12">
+      <soap12:address location="http://club.ncuhome.cn/NewsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NewsServiceHttpGet" binding="tns:NewsServiceHttpGet">
+      <http:address location="http://club.ncuhome.cn/NewsService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NewsServiceHttpPost" binding="tns:NewsServiceHttpPost">
+      <http:address location="http://club.ncuhome.cn/NewsService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

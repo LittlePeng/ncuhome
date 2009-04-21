@@ -1,0 +1,53 @@
+#container {
+	font-size: 12px;
+	background-color: #FFFFFF;
+	border:1px solid #F0E6E4;
+	width: 769px;
+	margin:auto;
+	margin-top:8px;
+}
+#header {
+	font-size: 12px;
+	width: 767px;
+	margin: 2px 0px 0px 2px;
+	height: 66px;
+}
+#new {
+	
+	height:16px;
+	background-color:#FCF9F9;
+	font-size:12px;
+}
+#pageboby {
+	margin:10px 4px 4px 4px;
+	height: 370px;
+	
+}
+#chat {
+   	float:left;
+	width: 140px;
+	height:369px;
+	clear:both;
+	border: 1px solid #F0E6E4;
+	
+}
+#loginbar {
+    border:1px solid #F0E6E4;
+    float:right;
+    width:612px;
+	height:260px;
+}
+#ms {
+    margin-top:4px;
+    float:right;
+    width:612px;
+    height:103px;
+    border:1px solid #F0E6E4
+}
+#footer {
+	margin:0px auto;
+	font-size: 6px;
+	text-align: right;
+	padding-top: 8px;
+	width: 710px;
+}

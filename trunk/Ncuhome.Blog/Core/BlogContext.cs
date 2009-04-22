@@ -7,13 +7,23 @@ using Ncuhome.Blog.Entity;
 
 namespace Ncuhome.Blog.Core
 {
+    /// <summary>
+    /// BlogContext 封装，扩充了HttpContext。
+    /// 主要用于 博客 项目的各项信息的获取，包括QueryString，From，Cookie等，目前，主要是从QueryString中获取
+    /// 
+    /// 这个类的设计参考了 Community Server 的设计方式，BlogContext 来源于 HttpContext 
+    /// HttpContext 是一个 aspnet 开发的“好朋友” ，而这个类的目的也是同样的。 ;)
+    /// 
+    /// llj098,20090422
+    /// </summary>
     public class BlogContext
     {
+        #region Fileds
         private int year = -1;
         private int month = -1;
         private int day = -1;
         private int mfiid = -1;
-        private string  afiid = "0";
+        private string afiid = "0";
         private int bloguserid = -1;
         private int logId = -1;
         private int messageID = -1;
@@ -33,7 +43,7 @@ namespace Ncuhome.Blog.Core
         private int friendGroupID = -1;
         private bool isQuote = false;
         private string category = "";
-        private bool isManager=false;
+        private bool isManager = false;
         //是否为个人博客
         private bool isPesonal = true;
         private string action = "";
@@ -43,7 +53,7 @@ namespace Ncuhome.Blog.Core
         private HttpContext context;
         private DateTime requestStartTime = DateTime.Now;
 
-
+        #endregion
 
         /// <summary>
         /// 初始化
@@ -55,7 +65,7 @@ namespace Ncuhome.Blog.Core
             if (context == null)
                 return;
 
-          
+
             // Read common values we expect to find on the QS
             //
             action = context.Request.QueryString["action"];
@@ -69,7 +79,7 @@ namespace Ncuhome.Blog.Core
             }
             if (iD <= 0)
             {
-                iD = GetMfiidByDomain(context,"toDomain");
+                iD = GetMfiidByDomain(context, "toDomain");
             }
 
             afiid = context.Request.QueryString["afiid"];
@@ -92,6 +102,9 @@ namespace Ncuhome.Blog.Core
 
             attachmentID = GetIntFromQueryString(context, "AttachmentID");
 
+            // emmmm./...
+            //why not bool.TryParse???
+            //llj098,20090422
             try
             {
                 isQuote = bool.Parse(context.Request.QueryString["Quote"]);
@@ -123,8 +136,8 @@ namespace Ncuhome.Blog.Core
                 //在同一个请求中缓存基本数据
                 if (HttpContext.Current.Items["BlogContext"] == null)
                 {
-                    BlogContext  Blog=new BlogContext();
-                    HttpContext.Current.Items.Add("BlogContext",Blog);
+                    BlogContext Blog = new BlogContext();
+                    HttpContext.Current.Items.Add("BlogContext", Blog);
                     return Blog;
                 }
                 return (BlogContext)HttpContext.Current.Items["BlogContext"];
@@ -198,7 +211,7 @@ namespace Ncuhome.Blog.Core
 
             return returnValue;
         }
-       
+
         public static string GetApplicationName()
         {
             return GetApplicationName(HttpContext.Current);
@@ -279,6 +292,8 @@ namespace Ncuhome.Blog.Core
         {
             get { return action; }
         }
+
+        //判断当前用户是否是管理员
         public bool IsManager
         {
             get
@@ -300,9 +315,9 @@ namespace Ncuhome.Blog.Core
         {
             get { return month; }
         }
-        public int Day 
+        public int Day
         {
-            get { return day; } 
+            get { return day; }
         }
         /// <summary>
         /// FIID对应的Blog用户ID
@@ -367,7 +382,8 @@ namespace Ncuhome.Blog.Core
 
         public int PageIndex
         {
-            get {
+            get
+            {
                 if (pageIndex < 1)
                     return 1;
                 else
@@ -430,17 +446,18 @@ namespace Ncuhome.Blog.Core
         }
         public string ThemeName
         {
-            get {
+            get
+            {
                 return themeName;
-                }
-            
+            }
+
         }
         public string CssFilePath
         {
-            get {
+            get
+            {
                 return cssFilePath;
             }
         }
     }
 }
-

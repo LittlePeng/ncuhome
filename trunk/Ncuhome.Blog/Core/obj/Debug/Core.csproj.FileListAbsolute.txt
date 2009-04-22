@@ -9,3 +9,15 @@ E:\博客\Blog\Core\bin\Debug\Ncuhome.Blog.Entity.pdb
 E:\博客\Blog\Core\bin\Debug\Ncuhome.Blog.Data.pdb
 E:\博客\Blog\Core\obj\Debug\Ncuhome.Blog.Core.dll
 E:\博客\Blog\Core\obj\Debug\Ncuhome.Blog.Core.pdb
+F:\项目\ncuhome\Ncuhome.Blog\Core\obj\Debug\ResolveAssemblyReference.cache
+F:\项目\ncuhome\Ncuhome.Blog\Core\obj\Debug\Ncuhome.Blog.Core.dll
+F:\项目\ncuhome\Ncuhome.Blog\Core\obj\Debug\Ncuhome.Blog.Core.pdb
+F:\项目\ncuhome\Ncuhome.Blog\Core\bin\Debug\Ncuhome.Blog.Core.dll.config
+F:\项目\ncuhome\Ncuhome.Blog\Core\bin\Debug\Ncuhome.Blog.Core.dll
+F:\项目\ncuhome\Ncuhome.Blog\Core\bin\Debug\Ncuhome.Blog.Core.pdb
+F:\项目\ncuhome\Ncuhome.Blog\Core\bin\Debug\Ncuhome.Blog.Data.dll
+F:\项目\ncuhome\Ncuhome.Blog\Core\bin\Debug\Ncuhome.Blog.Entity.dll
+F:\项目\ncuhome\Ncuhome.Blog\Core\bin\Debug\Ncuhome.Login.dll
+F:\项目\ncuhome\Ncuhome.Blog\Core\bin\Debug\RSS.NET.dll
+F:\项目\ncuhome\Ncuhome.Blog\Core\bin\Debug\Ncuhome.Blog.Entity.pdb
+F:\项目\ncuhome\Ncuhome.Blog\Core\bin\Debug\Ncuhome.Blog.Data.pdb

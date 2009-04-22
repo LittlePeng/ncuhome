@@ -103,27 +103,5 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://222.204.24.188:8080/
-		SccLocalPath0 = .
-		SccWebProject1 = true
-		SccProjectUniqueName1 = Blog
-		SccLocalPath1 = .
-		SccProjectFilePathRelativizedFromConnection1 = Blog\\
-		SccProjectEnlistmentChoice1 = 2
-		SccProjectUniqueName2 = Controls\\Controls.csproj
-		SccProjectName2 = Controls
-		SccLocalPath2 = Controls
-		SccProjectUniqueName3 = Core\\Core.csproj
-		SccProjectName3 = Core
-		SccLocalPath3 = Core
-		SccProjectUniqueName4 = Entity\\Entity.csproj
-		SccProjectName4 = Entity
-		SccLocalPath4 = Entity
-		SccProjectUniqueName5 = LinqDataProviders\\LinqDataProviders.csproj
-		SccProjectName5 = LinqDataProviders
-		SccLocalPath5 = LinqDataProviders
-	EndGlobalSection
+
 EndGlobal

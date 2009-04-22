@@ -7,7 +7,9 @@ using Ncuhome.Blog.Core.FuncCommonReference;
 namespace Ncuhome.Blog.Core
 {
     /// <summary>
-    /// 高等学生信息
+    /// 高等学生信息,通过WebService 获得一些学生信息数据。
+    /// ==我在想，有什么方法可以把这的可恶的东西独立出去? :) ==
+    /// llj098,20090422
     /// </summary>
     public  class BGDXSJBXX
     {
@@ -16,75 +18,79 @@ namespace Ncuhome.Blog.Core
         /// </summary>
         /// <param name="XH"></param>
         /// <returns></returns>
-        public static FuncCommonReference.XSJBXX GetXSJBXXByXH(string XH)
+        public static FuncCommonReference.XSJBXX GetXSJBXXByXH(string xh)
         {
              FuncCommonService xs= new FuncCommonService();
-            return   xs.getXSJBXXByXh(XH);
+             return xs.getXSJBXXByXh(xh);
         }
         /// <summary>
         ///  根据FIId获取 个人基本信息
         /// </summary>
         /// <param name="Fiid"></param>
         /// <returns></returns>
-        public static XSJBXX GetXSJBXXByFIID(int Fiid)
+        public static XSJBXX GetXSJBXXByFIID(int fiid)
         {
-           int TxzID= (int) BView_CommonFunction.GetTxzIDByFIID(Fiid);
-           FuncCommonService xs = new FuncCommonService();
-           string XH= xs.GetNumberByTxzID(TxzID);
-           return xs.getXSJBXXByXh(XH);
+            int txzId = (int)BView_CommonFunction.GetTxzIDByFIID(fiid);
+            FuncCommonService xs = new FuncCommonService();
+            string xh = xs.GetNumberByTxzID(txzId);
+            return xs.getXSJBXXByXh(xh);
         }
-        public static int GetTxzIdByTxzUID(string TxzUID)
+        
+        /// <summary>
+        /// 根据通行证的用户名获得数字型的ID,llj098,20090422
+        /// </summary>
+        /// <param name="txzUID"></param>
+        /// <returns></returns>
+        public static int GetTxzIdByTxzUID(string txzUID)
         {
             FuncCommonService xs = new FuncCommonService();
-            return xs.GetTxzIDByTxz(TxzUID);
+            return xs.GetTxzIDByTxz(txzUID);
         }
+        
         /// <summary>
         ///  根据通行证ID获取 个人基本信息
         /// </summary>
         /// <param name="TxzID"></param>
         /// <returns></returns>
-        public static XSJBXX GetXSJBXXByTxzID(int TxzID)
+        public static XSJBXX GetXSJBXXByTxzID(int txzID)
         {
             FuncCommonService xs = new FuncCommonService();
-            string XH = xs.GetNumberByTxzID(TxzID);
-            return xs.getXSJBXXByXh(XH);
+            string xh = xs.GetNumberByTxzID(txzID);
+            return xs.getXSJBXXByXh(xh);
         }
-
-
 
         /// <summary>
         /// 根据学号获取班级基本信息
         /// </summary>
         /// <param name="XH"></param>
         /// <returns></returns>
-        public static BJJBXX GetBJJBXXByXH(string XH)
+        public static BJJBXX GetBJJBXXByXH(string xh)
         {
             FuncCommonService xs = new FuncCommonService();
-            return  xs.getBJJBXXByBh(XH);
+            return  xs.getBJJBXXByBh(xh);
         }
         /// <summary>
         /// 根据FIId获取班级基本信息
         /// </summary>
         /// <param name="Fiid"></param>
         /// <returns></returns>
-        public static BJJBXX GetBJJBXXByFIID(int Fiid)
+        public static BJJBXX GetBJJBXXByFIID(int fiid)
         {
-            int TxzID = (int)BView_CommonFunction.GetTxzIDByFIID(Fiid);
+            int txzID = (int)BView_CommonFunction.GetTxzIDByFIID(fiid);
             FuncCommonService xs = new FuncCommonService();
-            string XH = xs.GetNumberByTxzID(TxzID);
-            return xs.getBJJBXXByBh(XH);
+            string xh = xs.GetNumberByTxzID(txzID);
+            return xs.getBJJBXXByBh(xh);
         }
         /// <summary>
         /// 根据通行证号码获取班级基本信息
         /// </summary>
         /// <param name="TxzID"></param>
         /// <returns></returns>
-        public static BJJBXX GetBJJBXXByTxzID(int TxzID)
+        public static BJJBXX GetBJJBXXByTxzID(int txzID)
         {
             FuncCommonService xs = new FuncCommonService();
-            string XH = xs.GetNumberByTxzID(TxzID);
-            return xs.getBJJBXXByBh(XH);
-        }
-       
+            string xh = xs.GetNumberByTxzID(txzID);
+            return xs.getBJJBXXByBh(xh);
+        }       
     }
 }

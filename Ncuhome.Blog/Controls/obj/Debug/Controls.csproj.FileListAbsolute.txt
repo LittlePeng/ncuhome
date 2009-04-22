@@ -12,3 +12,6 @@ E:\博客\Blog\Controls\obj\Debug\Ncuhome.Blog.Controls.dll
 E:\博客\Blog\Controls\obj\Debug\Ncuhome.Blog.Controls.pdb
 E:\博客\Blog\Controls\bin\Debug\Ncuhome.Login.dll
 E:\博客\Blog\Controls\bin\Debug\Ncuhome.Blog.Controls.dll.config
+F:\项目\ncuhome\Ncuhome.Blog\Controls\obj\Debug\ResolveAssemblyReference.cache
+F:\项目\ncuhome\Ncuhome.Blog\Controls\obj\Debug\Ncuhome.Blog.Controls.dll
+F:\项目\ncuhome\Ncuhome.Blog\Controls\obj\Debug\Ncuhome.Blog.Controls.pdb

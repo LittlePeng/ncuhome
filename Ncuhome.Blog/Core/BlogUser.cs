@@ -7,6 +7,10 @@ using Ncuhome.Blog.Entity;
 
 namespace Ncuhome.Blog.Core
 {
+    /// <summary>
+    /// 博客用户类
+    /// 如果登陆了此类构造函数会自动的将各个字段赋值，如果是匿名用户，也同样的赋予匿名用户的字段值。
+    /// </summary>
     public  class BlogUser
     {
         public BlogUser()
@@ -31,6 +35,8 @@ namespace Ncuhome.Blog.Core
                     BlogUserID = -1;
                 }
 
+                //这样的写法，说实话，真不好看，但是目前我也没想到怎么样写好看一些。:p
+                //llj098,20090422
                 TxzUID =System.Web.HttpContext.Current.Request.Cookies["UID"].Value;
                 TxzID = Convert.ToInt32(System.Web.HttpContext.Current.Request.Cookies["ID"].Value);
                 TxzXM = System.Web.HttpContext.Current.Request.Cookies["XM"].Value;

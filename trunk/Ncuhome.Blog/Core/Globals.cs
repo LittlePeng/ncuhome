@@ -13,7 +13,7 @@ using Rss;
 namespace Ncuhome.Blog.Core
 {
     /// <summary>
-    /// 
+    /// 全局常用函数
     /// </summary>
     public class Globals
     {

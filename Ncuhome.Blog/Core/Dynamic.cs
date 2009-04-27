@@ -1977,6 +1977,9 @@ namespace System.Linq.Dynamic
         }
     }
 
+    /// <summary>
+    /// 错误信息
+    /// </summary>
     static class Res
     {
         public const string DuplicateIdentifier = "The identifier '{0}' was defined more than once";

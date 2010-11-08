@@ -1,0 +1,64 @@
+#container {
+	font-size: 12px;
+	background-color: #FFFFFF;
+	border:1px solid #F0E6E4;
+	width: 769px;
+	margin:auto;
+	margin-top:8px;
+}
+#header {
+	font-size: 12px;
+	width: 767px;
+	margin: 2px 0px 0px 2px;
+	height: 66px;
+}
+#new {
+	margin-top:10px;
+	height:20px;
+	background-color:#FCF9F9;
+	font-size:12px;
+}
+#pageboby {
+	margin:10px 4px 8px 4px;
+	height: 432px;
+	
+}
+#chat {
+	float:left;
+	width: 590px;
+	height:189px;
+	clear:both;
+	border: 1px solid #F0E6E4;
+	
+}
+#loginbar {
+    float:right;
+    width:161px;
+	height:190px;
+	background-image:url(../../images/index_15.gif);
+}
+#old {
+    margin-top:7px;
+    width:590px;
+    height:235px;
+    border:1px solid #F0E6E4;
+	float:left;
+	background-image:url(../../images/bj2.gif)
+}
+#ms {
+    margin-top:7px;
+    float:right;
+    width:159px;
+    height:235px;
+    border:1px solid #F0E6E4;
+	background-image:url(../../images/bj2.gif)
+}
+#footer {
+margin:0px auto;
+width:769px;
+height:47px;
+}
+#member {
+margin:42px 0px 0px 55px;
+width:80px;
+}

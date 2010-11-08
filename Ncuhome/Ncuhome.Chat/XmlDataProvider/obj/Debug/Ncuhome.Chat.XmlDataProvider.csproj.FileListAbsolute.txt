@@ -1,0 +1,9 @@
+E:\正在开发\Ncuhome\Ncuhome.Chat\XmlDataProvider\bin\Debug\XmlDataProvider.dll
+E:\正在开发\Ncuhome\Ncuhome.Chat\XmlDataProvider\bin\Debug\XmlDataProvider.pdb
+E:\正在开发\Ncuhome\Ncuhome.Chat\XmlDataProvider\bin\Debug\Ncuhome.Chat.Model.dll
+E:\正在开发\Ncuhome\Ncuhome.Chat\XmlDataProvider\bin\Debug\Nuhome.FrameWork.dll
+E:\正在开发\Ncuhome\Ncuhome.Chat\XmlDataProvider\bin\Debug\Nuhome.FrameWork.pdb
+E:\正在开发\Ncuhome\Ncuhome.Chat\XmlDataProvider\bin\Debug\Ncuhome.Chat.Model.pdb
+E:\正在开发\Ncuhome\Ncuhome.Chat\XmlDataProvider\obj\Debug\ResolveAssemblyReference.cache
+E:\正在开发\Ncuhome\Ncuhome.Chat\XmlDataProvider\obj\Debug\XmlDataProvider.dll
+E:\正在开发\Ncuhome\Ncuhome.Chat\XmlDataProvider\obj\Debug\XmlDataProvider.pdb

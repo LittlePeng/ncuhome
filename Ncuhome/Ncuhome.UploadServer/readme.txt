@@ -1,0 +1,4 @@
+此项目为大文件上传
+IISLargeFileUpload 为在IIS上实现
+HttpLargeFileUpload 为非IIS上的Http实现
+TcpFileUpload 为非Http实现，而是基于Tcp实现

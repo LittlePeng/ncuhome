@@ -10,6 +10,6 @@ namespace Ncuhome.Chat.Core
     /// </summary>
    public  class CometMessageDTO
     {
-
+       public string Message { get; set; }
     }
 }

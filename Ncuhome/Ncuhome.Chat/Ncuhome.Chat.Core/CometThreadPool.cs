@@ -46,7 +46,7 @@ namespace Ncuhome.Chat.Core
                 {
                     AssignThreadIndex = 0;
                 }
-                CometThreads[AssignThreadIndex].CometResult.AddFirst(result);
+                CometThreads[AssignThreadIndex].EnQueueCometHandler(result);
                 AssignThreadIndex++;
             }
         }

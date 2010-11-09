@@ -11,9 +11,10 @@ namespace Ncuhome.Chat.Core
 
         public IAsyncResult BeginProcessRequest(HttpContext context, AsyncCallback cb, object extraData)
         {
-            //异步请求将请求放入自定义线程池内,Chunk输出，20s后超时
+            //异步请求将请求放入自定义线程池内,由消息抽发或者定时轮询处理
+            //Chunked很难处理浏览器未加载完问题，暂时不做，有消息即返回
             CometAsyncResult result = new CometAsyncResult(1,context, cb, extraData);
-            result.HandlerCometRequest();
+            result.HandleCometRequest();
             return result;
         }
 

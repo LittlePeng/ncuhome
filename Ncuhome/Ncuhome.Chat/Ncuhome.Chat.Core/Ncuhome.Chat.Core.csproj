@@ -46,6 +46,7 @@
     <Compile Include="CometMessageDTO.cs" />
     <Compile Include="CometThread.cs" />
     <Compile Include="CometThreadPool.cs" />
+    <Compile Include="HandleFireMode.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingltonObject.cs" />

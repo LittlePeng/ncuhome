@@ -6,32 +6,57 @@ using System.Web;
 
 namespace Ncuhome.Chat.Core
 {
-   public   class CometAsyncResult : IAsyncResult
+    public class CometAsyncResult : IAsyncResult
     {
-       public CometAsyncResult(int userId,HttpContext  context,AsyncCallback callBack,object asyncState)
-       {
-           this.UserId = userId;
-           this.Context = context;
-           this.AsyncState = asyncState;
-           this.CallBack = CallBack;
-       }
+        public CometAsyncResult(int identity, HttpContext context, AsyncCallback callBack, object asyncState)
+        {
+            this.BeginHandleDateTime = DateTime.Now;
+            this.Identity = Identity;
+            this.Context = context;
+            this.AsyncState = asyncState;
+            this.CallBack = CallBack;
+        }
 
-       public void HandlerCometRequest()
-       {
-           //加入处理队列
-           CometThreadPool.QueueCometHandler(this);
-       }
+        /// <summary>
+        /// 将长连接加入线程池处理
+        /// </summary>
+        public void HandleCometRequest()
+        {
+            CometThreadPool.QueueCometHandler(this);
+        }
 
-       public HttpContext Context { get; set; }
+        /// <summary>
+        /// 开始处理时间，用于统计超时
+        /// </summary>
+        public DateTime BeginHandleDateTime { get; set; }
 
-       /// <summary>
-       /// 用户Id
-       /// </summary>
-       public int UserId { get; set; }
+        /// <summary>
+        /// 处理返回数据
+        /// </summary>
+        public CometMessageDTO ResponseMessage { get; set; }
 
-       public AsyncCallback CallBack { get; set; }
+        /// <summary>
+        /// 结束长连接
+        /// </summary>
+        public void FinishCometRequest()
+        {
+            //回调结束连接
+            this.IsCompleted = true;
+            if (CallBack != null)
+            {
+                CallBack(this);
+            }
+        }
+        public HttpContext Context { get; set; }
 
-       public object AsyncState { get; set; }
+        /// <summary>
+        /// 连接标识
+        /// </summary>
+        public int Identity { get; set; }
+
+        public AsyncCallback CallBack { get; set; }
+
+        public object AsyncState { get; set; }
 
         public System.Threading.WaitHandle AsyncWaitHandle
         {
@@ -40,12 +65,9 @@ namespace Ncuhome.Chat.Core
 
         public bool CompletedSynchronously
         {
-            get { throw new NotImplementedException(); }
+            get { return false; }
         }
 
-        public bool IsCompleted
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public bool IsCompleted { get; set; }
     }
 }

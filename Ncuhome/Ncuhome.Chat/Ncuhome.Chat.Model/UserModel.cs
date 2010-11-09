@@ -7,6 +7,7 @@ namespace Ncuhome.Chat.Model
 {
     public class UserModel
     {
+        public int UserIdentity { get; set; }
         /// <summary>
         /// 用户Id
         /// </summary>

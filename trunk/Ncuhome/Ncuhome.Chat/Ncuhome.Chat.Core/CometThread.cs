@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Ncuhome.Chat.Model;
+
 
 namespace Ncuhome.Chat.Core
 {
@@ -18,6 +20,11 @@ namespace Ncuhome.Chat.Core
 
         // 事件抽发模式
         public HandleFiredMode FiredMode=HandleFiredMode.NewPostEvent;
+        //聊天记录，每个线程保存一份记录，数据量不大，避免并发性能问题
+        public List<ChatMessage> CometChatMessage = new List<ChatMessage>();
+
+        //新消息导到是处理线程中所有连接
+        public AutoResetEvent CometWaitHandle = new AutoResetEvent(false);
 
         public void CometThreadStart()
         {
@@ -42,10 +49,19 @@ namespace Ncuhome.Chat.Core
             }
         }
 
+        public void HandeNewMessage(ChatMessage message)
+        {
+            lock (SyncRoot2)
+            {
+                CometChatMessage.Add(message);
+            }
+            CometWaitHandle.Set();
+        }
 
         void HandleNewPostEventMode(CometAsyncResult[] results)
-        { 
-        
+        {
+            //500ms超时进入轮询
+            CometWaitHandle.WaitOne(500);
         }
 
         /// <summary>
@@ -58,6 +74,7 @@ namespace Ncuhome.Chat.Core
         }
 
         private object SyncRoot = new object();
+        private object SyncRoot2 = new object();
 
         private void FinishTimeOutHandler(CometAsyncResult result)
         {
@@ -80,6 +97,10 @@ namespace Ncuhome.Chat.Core
 
         public void EnQueueCometHandler(CometAsyncResult result)
         {
+            //需要立即处理请求，如果有数据及立即返回
+            //TODO
+
+            //无数据加入队列处理
             lock (SyncRoot)
             {
                 CometList.AddFirst(result);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using Ncuhome.Chat.Model;
 
 namespace Ncuhome.Chat.Core
 {
@@ -35,9 +36,22 @@ namespace Ncuhome.Chat.Core
         private static int AssignThreadIndex = 0;
         
         public static int ThreadsCount { get; set; }
-  
 
+        public static void HandleMessage(ChatMessage message)
+        {
+            lock (SyncRoot)
+            {
+                for (int i = 0; i < ThreadsCount; i++)
+                {
+                    CometThreads[i].HandeNewMessage(message);
+                }
+            }
+        }
 
+        /// <summary>
+        /// 把长连接队列
+        /// </summary>
+        /// <param name="result"></param>
         public static void QueueCometHandler(CometAsyncResult result)
         {
             lock (SyncRoot)

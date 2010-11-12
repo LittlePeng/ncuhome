@@ -3,29 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using Ncuhome.Chat.Model;
 
 namespace Ncuhome.Chat.IISChatServer
 {
     public class CometAsyncResult : IAsyncResult
     {
-
-  
         /// <summary>
         /// 开始处理时间，用于统计超时
         /// </summary>
         public DateTime BeginHandleDateTime { get; set; }
 
         /// <summary>
-        /// 处理返回数据
+        ///请求数据
         /// </summary>
-        public CometMessageDTO ResponseMessage { get; set; }
-
-         public HttpContext Context { get; set; }
+        public ChatRequest Request { get; set; }
 
         /// <summary>
-        /// 连接标识
+        /// 相应数据
         /// </summary>
-        public int Identity { get; set; }
+        public ChatResponse Response { get; set; }
+
+         public HttpContext Context { get; set; }
 
         public AsyncCallback CallBack { get; set; }
 
@@ -43,13 +42,14 @@ namespace Ncuhome.Chat.IISChatServer
 
         public bool IsCompleted { get; set; }
 
-        public CometAsyncResult(int identity, HttpContext context, AsyncCallback callBack, object asyncState)
+        public CometAsyncResult(ChatRequest chatRequest, HttpContext context, AsyncCallback callBack, object asyncState)
         {
+            this.Request = chatRequest;
+            this.Response = new ChatResponse();
             this.BeginHandleDateTime = DateTime.Now;
-            this.Identity = Identity;
             this.Context = context;
             this.AsyncState = asyncState;
-            this.CallBack = CallBack;
+            this.CallBack = callBack;
         }
 
         /// <summary>
@@ -67,6 +67,11 @@ namespace Ncuhome.Chat.IISChatServer
         {
             //回调结束连接
             this.IsCompleted = true;
+            if (this.Response.Message == null)
+            {
+                this.Response.IsTimeOut = true;
+            }
+        
             if (CallBack != null)
             {
                 CallBack(this);

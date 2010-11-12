@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChatMessage.cs" />
+    <Compile Include="ChatMessageModel.cs" />
+    <Compile Include="ChatRequest.cs" />
+    <Compile Include="ChatResponse.cs" />
     <Compile Include="CometMessageDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserModel.cs" />

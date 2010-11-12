@@ -11,7 +11,7 @@ namespace Ncuhome.Chat.IISChatServer
     {
         //最大工作线程
         public const int MaxThreadCount = 10;
-        //默认工作线程，处理程序为全CPU操作，默认与cpu核心数相同
+        //默认工作线程，处理程序为CPU密集操作，默认与cpu核心数相同即可
         public const int DefaultThreadCount = 2;
 
         public static CometThread[] CometThreads;
@@ -37,7 +37,7 @@ namespace Ncuhome.Chat.IISChatServer
         
         public static int ThreadsCount { get; set; }
 
-        public static void HandleMessage(ChatMessage message)
+        public static void HandleMessage(ChatMessageModel message)
         {
             lock (SyncRoot)
             {

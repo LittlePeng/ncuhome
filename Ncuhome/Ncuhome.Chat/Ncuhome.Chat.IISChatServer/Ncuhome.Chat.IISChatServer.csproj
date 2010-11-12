@@ -41,11 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChatSessionManager.cs" />
     <Compile Include="CometAsyncResult.cs" />
     <Compile Include="CometHandler.cs" />
-    <Compile Include="CometMessageDTO.cs" />
     <Compile Include="CometThread.cs" />
     <Compile Include="CometThreadPool.cs" />
+    <Compile Include="FinishHandler.cs" />
     <Compile Include="HandleFireMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

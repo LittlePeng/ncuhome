@@ -18,7 +18,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ncuhome.Chat.WebSite", "Ncuhome.Chat\Ncuhome.Chat.WebSite\", "{06293C60-A6F4-4F50-A8A4-D9BA4A0A0C06}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
-		ProjectReferences = "{AEAAB5CA-D9AD-4DE3-AB9D-3768ECC83FA4}|Ncuhome.Chat.DataGateWay.dll;{4D1D06E6-40C7-4302-8E42-C588B607D4D0}|Ncuhome.Chat.Model.dll;{D8CF5C3A-88E7-455C-A6CB-94CA8FEC1537}|Nuhome.FrameWork.dll;{41FCDB1D-1916-46FB-BFDC-198C76D2C14C}|Ncuhome.Chat.Core.dll;{F402C820-E8D4-47EC-A0B0-BBBD72567F75}|Ncuhome.Chat.DataService.dll;{C833B645-D2D3-480B-B251-D06247CBC927}|XmlDataProvider.dll;"
+		ProjectReferences = "{AEAAB5CA-D9AD-4DE3-AB9D-3768ECC83FA4}|Ncuhome.Chat.DataGateWay.dll;{4D1D06E6-40C7-4302-8E42-C588B607D4D0}|Ncuhome.Chat.Model.dll;{D8CF5C3A-88E7-455C-A6CB-94CA8FEC1537}|Nuhome.FrameWork.dll;{41FCDB1D-1916-46FB-BFDC-198C76D2C14C}|Ncuhome.Chat.Core.dll;{F402C820-E8D4-47EC-A0B0-BBBD72567F75}|Ncuhome.Chat.DataService.dll;{C833B645-D2D3-480B-B251-D06247CBC927}|XmlDataProvider.dll;{1FEE1C51-4602-4823-91CC-1638F3B5C4E3}|Ncuhome.Chat.IISChatServer.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Ncuhome.Chat.WebSite"
 		Debug.AspNetCompiler.PhysicalPath = "Ncuhome.Chat\Ncuhome.Chat.WebSite\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Ncuhome.Chat.WebSite\"

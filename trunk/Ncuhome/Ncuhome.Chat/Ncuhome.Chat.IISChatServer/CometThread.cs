@@ -22,10 +22,12 @@ namespace Ncuhome.Chat.IISChatServer
         // 事件触发模式
         public HandleFiredMode FiredMode=HandleFiredMode.NewPostEvent;
         //聊天记录，每个线程保存一份记录，数据量不大，避免并发性能问题
-        public List<ChatMessage> CometChatMessage = new List<ChatMessage>();
+        public List<ChatMessageModel> CometChatMessage = new List<ChatMessageModel>();
 
         //WaitHanlder，新消息是自动重置，新消息导到是处理线程中所有连接
         public AutoResetEvent CometWaitHandle = new AutoResetEvent(false);
+
+        public AutoResetEvent ThreadWaitHandle = new AutoResetEvent(false);
 
         public CometThread()
         {
@@ -39,13 +41,18 @@ namespace Ncuhome.Chat.IISChatServer
         {
             while (true)
             {
+              
                 //转成数组再处理，避免长时间lock
                 CometAsyncResult[] processHandler;
                 lock (RequestSyncRoot)
                 {
                     processHandler = CometList.ToArray();
                 }
-
+                //
+                if (processHandler.Count() == 0)
+                {
+                    ThreadWaitHandle.WaitOne();
+                }
                 //处理工作
                 if (FiredMode == HandleFiredMode.NewPostEvent)
                 {
@@ -58,13 +65,17 @@ namespace Ncuhome.Chat.IISChatServer
             }
         }
 
-        //添加新消息
-        public void HandeNewMessage(ChatMessage message)
+        /// <summary>
+        /// 添加新消息
+        /// </summary>
+        /// <param name="message"></param>
+        public void HandeNewMessage(ChatMessageModel message)
         {
             lock (MessageSyncRoot)
             {
                 CometChatMessage.Add(message);
             }
+            //新消息信号
             CometWaitHandle.Set();
         }
 
@@ -72,14 +83,19 @@ namespace Ncuhome.Chat.IISChatServer
         void HandleNewPostEventMode(CometAsyncResult[] results)
         {
             //500ms超时进入轮询
-            CometWaitHandle.WaitOne(500);
-            ChatMessage[] chatMessages;
+            CometWaitHandle.WaitOne(1000);
+            ChatMessageModel[] chatMessages;
             lock (MessageSyncRoot)
             {
                 chatMessages=CometChatMessage.ToArray();
-                CometChatMessage.Clear();
+                //内存中值保留前20条记录，避免查询耗时
+                CometChatMessage=CometChatMessage.Take(20).ToList();
             }
-            
+            ChatSessionManager sessionManager = new ChatSessionManager();
+            foreach (var result in results)
+            {
+                sessionManager.HandleSession(result, chatMessages, new FinishHandler(FinishCometHandler),new FinishHandler(FinishTimeOutCometHandler));
+            }
         }
 
         /// <summary>
@@ -87,25 +103,37 @@ namespace Ncuhome.Chat.IISChatServer
         /// </summary>
         /// <param name="results"></param>
         void HandlePollingEventMode(CometAsyncResult[] results)
-        { 
-        
-        }
-   
-        private void FinishTimeOutHandler(CometAsyncResult result)
         {
-            if ((DateTime.Now - result.BeginHandleDateTime).Seconds >= 20)
+            ChatMessageModel[] chatMessages;
+            lock (MessageSyncRoot)
             {
-                FinishCometHandler(result,null);
+                chatMessages = CometChatMessage.ToArray();
+                //内存中值保留前20条记录，避免查询耗时
+                CometChatMessage = CometChatMessage.Take(20).ToList();
             }
+            ChatSessionManager sessionManager = new ChatSessionManager();
+            foreach (var result in results)
+            {
+                sessionManager.HandleSession(result, chatMessages, new FinishHandler(FinishCometHandler), new FinishHandler(FinishTimeOutCometHandler));
+            }
+            //定时扫描
+            Thread.Sleep(200);
         }
 
+        private void FinishTimeOutCometHandler(CometAsyncResult result)
+        {
+            if ((DateTime.Now - result.BeginHandleDateTime).TotalSeconds>=5)
+            {
+                FinishCometHandler(result);
+            }
+        }
+  
         /// <summary>
         /// 完成长连接处理
         /// </summary>
         /// <param name="result"></param>
-        private void FinishCometHandler(CometAsyncResult result, CometMessageDTO message)
+        private void FinishCometHandler(CometAsyncResult result)
         { 
-            result.ResponseMessage = message;
             result.FinishCometRequest();
             DeQueueCometHandler(result);
         }
@@ -119,6 +147,8 @@ namespace Ncuhome.Chat.IISChatServer
             lock (RequestSyncRoot)
             {
                 CometList.AddFirst(result);
+                //通知线程开始工作
+                ThreadWaitHandle.Set();
             }
         }
 

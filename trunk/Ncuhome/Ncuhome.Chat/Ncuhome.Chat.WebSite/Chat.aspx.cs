@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using Ncuhome.Chat.Core;
+using System.Web.UI.WebControls;
 
-public partial class Logout : System.Web.UI.Page
+public partial class Chat : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Login.Instance.CheckLogOut();
-        Response.Redirect("Default.aspx");
+
     }
 }

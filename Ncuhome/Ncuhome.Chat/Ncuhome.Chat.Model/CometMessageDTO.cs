@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Ncuhome.Chat.Core
+namespace Ncuhome.Chat.Model
 {
     /// <summary>
     /// 用于长连接传送数据实体

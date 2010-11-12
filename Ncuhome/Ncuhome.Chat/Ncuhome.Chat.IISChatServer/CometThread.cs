@@ -6,10 +6,27 @@ using System.Threading;
 using Ncuhome.Chat.Model;
 
 
-namespace Ncuhome.Chat.Core
+namespace Ncuhome.Chat.IISChatServer
 {
     public class CometThread
     {
+        //CurrentThread
+        private Thread ChatThread;
+        //Request Queue
+        public LinkedList<CometAsyncResult> CometList;
+
+        //并发锁
+        private object RequestSyncRoot = new object();
+        private object MessageSyncRoot = new object();
+
+        // 事件触发模式
+        public HandleFiredMode FiredMode=HandleFiredMode.NewPostEvent;
+        //聊天记录，每个线程保存一份记录，数据量不大，避免并发性能问题
+        public List<ChatMessage> CometChatMessage = new List<ChatMessage>();
+
+        //WaitHanlder，新消息是自动重置，新消息导到是处理线程中所有连接
+        public AutoResetEvent CometWaitHandle = new AutoResetEvent(false);
+
         public CometThread()
         {
             CometList = new LinkedList<CometAsyncResult>();
@@ -18,21 +35,13 @@ namespace Ncuhome.Chat.Core
             ChatThread.Start();
         }
 
-        // 事件抽发模式
-        public HandleFiredMode FiredMode=HandleFiredMode.NewPostEvent;
-        //聊天记录，每个线程保存一份记录，数据量不大，避免并发性能问题
-        public List<ChatMessage> CometChatMessage = new List<ChatMessage>();
-
-        //新消息导到是处理线程中所有连接
-        public AutoResetEvent CometWaitHandle = new AutoResetEvent(false);
-
         public void CometThreadStart()
         {
             while (true)
             {
                 //转成数组再处理，避免长时间lock
                 CometAsyncResult[] processHandler;
-                lock (SyncRoot)
+                lock (RequestSyncRoot)
                 {
                     processHandler = CometList.ToArray();
                 }
@@ -49,19 +58,28 @@ namespace Ncuhome.Chat.Core
             }
         }
 
+        //添加新消息
         public void HandeNewMessage(ChatMessage message)
         {
-            lock (SyncRoot2)
+            lock (MessageSyncRoot)
             {
                 CometChatMessage.Add(message);
             }
             CometWaitHandle.Set();
         }
 
+        //以新消息触发 队列请求处理
         void HandleNewPostEventMode(CometAsyncResult[] results)
         {
             //500ms超时进入轮询
             CometWaitHandle.WaitOne(500);
+            ChatMessage[] chatMessages;
+            lock (MessageSyncRoot)
+            {
+                chatMessages=CometChatMessage.ToArray();
+                CometChatMessage.Clear();
+            }
+            
         }
 
         /// <summary>
@@ -72,10 +90,7 @@ namespace Ncuhome.Chat.Core
         { 
         
         }
-
-        private object SyncRoot = new object();
-        private object SyncRoot2 = new object();
-
+   
         private void FinishTimeOutHandler(CometAsyncResult result)
         {
             if ((DateTime.Now - result.BeginHandleDateTime).Seconds >= 20)
@@ -98,10 +113,10 @@ namespace Ncuhome.Chat.Core
         public void EnQueueCometHandler(CometAsyncResult result)
         {
             //需要立即处理请求，如果有数据及立即返回
-            //TODO
+            //TODO , 
 
             //无数据加入队列处理
-            lock (SyncRoot)
+            lock (RequestSyncRoot)
             {
                 CometList.AddFirst(result);
             }
@@ -112,13 +127,12 @@ namespace Ncuhome.Chat.Core
         /// </summary>
         public void DeQueueCometHandler(CometAsyncResult result)
         {
-            lock (SyncRoot)
+            lock (RequestSyncRoot)
             {
                 CometList.Remove(result);
             }
         }
 
-        private Thread ChatThread;
-        public LinkedList<CometAsyncResult> CometList;
+
     }
 }

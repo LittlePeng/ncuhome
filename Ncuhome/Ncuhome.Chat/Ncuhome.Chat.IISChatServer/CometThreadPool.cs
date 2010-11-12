@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using Ncuhome.Chat.Model;
 
-namespace Ncuhome.Chat.Core
+namespace Ncuhome.Chat.IISChatServer
 {
     public static class CometThreadPool
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace Ncuhome.Chat.Core
+namespace Ncuhome.Chat.IISChatServer
 {
     public class CometHandler:IHttpAsyncHandler
     {

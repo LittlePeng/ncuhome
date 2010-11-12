@@ -34,14 +34,26 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="CometAsyncResult.cs" />
+    <Compile Include="CometHandler.cs" />
+    <Compile Include="CometMessageDTO.cs" />
+    <Compile Include="CometThread.cs" />
+    <Compile Include="CometThreadPool.cs" />
+    <Compile Include="HandleFireMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ncuhome.Chat.Model\Ncuhome.Chat.Model.csproj">
+      <Project>{4D1D06E6-40C7-4302-8E42-C588B607D4D0}</Project>
+      <Name>Ncuhome.Chat.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

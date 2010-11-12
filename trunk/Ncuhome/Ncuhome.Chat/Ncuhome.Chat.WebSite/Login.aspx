@@ -96,7 +96,7 @@
                                                 <td class="10" width="60">
                                                 </td>
                                                 <td class="10" width="97">
-                                                    <asp:Button ID="Button1" name="B1" runat="server" OnClick="Button1_Click" Text="登陆"
+                                                    <asp:Button ID="Button1" name="B1" runat="server"  Text="登陆"
                                                         UseSubmitBehavior="false" />&nbsp;
                                                 </td>
                                             </tr>

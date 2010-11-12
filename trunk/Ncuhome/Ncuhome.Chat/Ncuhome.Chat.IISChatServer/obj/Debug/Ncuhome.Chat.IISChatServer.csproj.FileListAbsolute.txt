@@ -1,0 +1,7 @@
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\obj\Debug\ResolveAssemblyReference.cache
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\bin\Debug\Ncuhome.Chat.IISChatServer.dll
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\bin\Debug\Ncuhome.Chat.IISChatServer.pdb
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\bin\Debug\Ncuhome.Chat.Model.dll
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\bin\Debug\Ncuhome.Chat.Model.pdb
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\obj\Debug\Ncuhome.Chat.IISChatServer.dll
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\obj\Debug\Ncuhome.Chat.IISChatServer.pdb

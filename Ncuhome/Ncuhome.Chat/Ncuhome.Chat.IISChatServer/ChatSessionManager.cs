@@ -3,30 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Ncuhome.Chat.Model;
+using Ncuhome.Chat.SimpleThreadPool;
 
 namespace Ncuhome.Chat.IISChatServer
 {
-    public class ChatSessionManager
+    public class ChatSessionManager : IChatSessionManager
     {
         /// <summary>
-        /// 先只实现群聊
+        /// 先只实现群聊,返回是否请求到了消息
         /// </summary>
-        /// <param name="result"></param>
-        /// <param name="messages"></param>
-        /// <param name="finishCallback"></param>
-        /// <param name="timeOutFinishCallback"></param>
-        public void HandleSession(CometAsyncResult result, IEnumerable<ChatMessageModel> messages, FinishHandler finishCallback, FinishHandler timeOutFinishCallback)
+        public bool DoChatSession(ICometRequest cometRequest, ChatMessageModel[] messages, FinishCallback cb)
         {
-            var newMessages = messages.Where(p => p.Id > result.Request.lastId);
+            CometAsyncResult request = cometRequest as CometAsyncResult;
+            var newMessages = messages.Where(p => p.Id > request.Request.lastId);
             if (newMessages.Count() > 0)
             {
-                result.Response.Message = newMessages;
-                finishCallback(result);
-                return;
+                request.Response.Message = newMessages;
+                request.IsFetchedMessage = true;
+            }
+            else
+            {
+                request.Response.Message =new  List<ChatMessageModel>();
             }
 
-            //如果超时即刻返回
-            timeOutFinishCallback(result);
+            if(cb!=null)
+            cb(cometRequest);
+
+            return request.IsFetchedMessage;
         }
     }
 }

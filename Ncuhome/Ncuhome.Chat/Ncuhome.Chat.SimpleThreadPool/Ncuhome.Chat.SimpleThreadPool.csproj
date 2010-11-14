@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1FEE1C51-4602-4823-91CC-1638F3B5C4E3}</ProjectGuid>
+    <ProjectGuid>{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ncuhome.Chat.IISChatServer</RootNamespace>
-    <AssemblyName>Ncuhome.Chat.IISChatServer</AssemblyName>
+    <RootNamespace>Ncuhome.Chat.SimpleThreadPool</RootNamespace>
+    <AssemblyName>Ncuhome.Chat.SimpleThreadPool</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -34,27 +34,25 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChatSessionManager.cs" />
-    <Compile Include="CometAsyncResult.cs" />
-    <Compile Include="CometHandler.cs" />
+    <Compile Include="CometThread.cs" />
+    <Compile Include="CometThreadPool.cs" />
+    <Compile Include="FinishCallback.cs" />
+    <Compile Include="ICometRequest.cs" />
+    <Compile Include="SessionTriggerMode.cs" />
+    <Compile Include="IChatSessionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ncuhome.Chat.Model\Ncuhome.Chat.Model.csproj">
       <Project>{4D1D06E6-40C7-4302-8E42-C588B607D4D0}</Project>
       <Name>Ncuhome.Chat.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ncuhome.Chat.SimpleThreadPool\Ncuhome.Chat.SimpleThreadPool.csproj">
-      <Project>{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}</Project>
-      <Name>Ncuhome.Chat.SimpleThreadPool</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

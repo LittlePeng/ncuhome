@@ -5,7 +5,8 @@
     void Application_Start(object sender, EventArgs e) 
     {
         //启动连接线程池
-        Ncuhome.Chat.IISChatServer.CometThreadPool.Start();
+        Ncuhome.Chat.IISChatServer.ChatSessionManager sessionManager = new Ncuhome.Chat.IISChatServer.ChatSessionManager();
+        Ncuhome.Chat.SimpleThreadPool.CometThreadPool.Start(sessionManager);
     }
     
     void Application_End(object sender, EventArgs e) 

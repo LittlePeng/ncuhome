@@ -38,7 +38,7 @@ namespace Ncuhome.Chat.IISChatServer
             }
             else
             {
-                cometResult.Context.Response.Write("{\"d\":\"success!\",\"message\":\receive:"+cometResult.Response.Message.Count().ToString()+"messages;\"}");
+                cometResult.Context.Response.Write("{\"d\":\"success!\",\"message\":\receive:" + cometResult.Response.Message.Count().ToString() + "messages;\"}");
             }
         }
 

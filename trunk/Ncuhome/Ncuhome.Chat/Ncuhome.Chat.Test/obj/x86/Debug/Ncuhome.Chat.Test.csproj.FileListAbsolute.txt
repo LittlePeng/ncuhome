@@ -1,0 +1,5 @@
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.Test\bin\Debug\Ncuhome.Chat.Test.exe
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.Test\bin\Debug\Ncuhome.Chat.Test.pdb
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.Test\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.Test\obj\x86\Debug\Ncuhome.Chat.Test.exe
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.Test\obj\x86\Debug\Ncuhome.Chat.Test.pdb

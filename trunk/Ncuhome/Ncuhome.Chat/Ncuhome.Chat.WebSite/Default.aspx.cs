@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using Ncuhome.Chat.IISChatServer;
-using System.Web.Query.Dynamic;
+using Ncuhome.Chat.SimpleThreadPool;
+using Ncuhome.Chat.Model;
 
 public partial class _Default : System.Web.UI.Page
 {
@@ -15,7 +15,7 @@ public partial class _Default : System.Web.UI.Page
     static int msgId = 1;
     protected void Button1_Click(object sender, EventArgs e)
     {
-        CometThreadPool.HandleMessage(new Ncuhome.Chat.Model.ChatMessageModel() {  Id=msgId, Content="dd"});
+        CometThreadPool.HandleMessage(new ChatMessageModel() {  Id=msgId, Content="dd"});
         msgId++;
     }
 }

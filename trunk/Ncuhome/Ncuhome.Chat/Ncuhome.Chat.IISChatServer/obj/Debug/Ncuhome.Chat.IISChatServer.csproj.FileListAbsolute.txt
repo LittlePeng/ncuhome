@@ -5,3 +5,5 @@ E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\bin\Debug\Ncuhom
 E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\bin\Debug\Ncuhome.Chat.Model.pdb
 E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\obj\Debug\Ncuhome.Chat.IISChatServer.dll
 E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\obj\Debug\Ncuhome.Chat.IISChatServer.pdb
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\bin\Debug\Ncuhome.Chat.SimpleThreadPool.dll
+E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.IISChatServer\bin\Debug\Ncuhome.Chat.SimpleThreadPool.pdb

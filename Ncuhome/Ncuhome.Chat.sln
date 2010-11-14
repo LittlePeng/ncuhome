@@ -18,7 +18,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ncuhome.Chat.WebSite", "Ncuhome.Chat\Ncuhome.Chat.WebSite\", "{06293C60-A6F4-4F50-A8A4-D9BA4A0A0C06}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
-		ProjectReferences = "{AEAAB5CA-D9AD-4DE3-AB9D-3768ECC83FA4}|Ncuhome.Chat.DataGateWay.dll;{4D1D06E6-40C7-4302-8E42-C588B607D4D0}|Ncuhome.Chat.Model.dll;{D8CF5C3A-88E7-455C-A6CB-94CA8FEC1537}|Nuhome.FrameWork.dll;{41FCDB1D-1916-46FB-BFDC-198C76D2C14C}|Ncuhome.Chat.Core.dll;{F402C820-E8D4-47EC-A0B0-BBBD72567F75}|Ncuhome.Chat.DataService.dll;{C833B645-D2D3-480B-B251-D06247CBC927}|XmlDataProvider.dll;{1FEE1C51-4602-4823-91CC-1638F3B5C4E3}|Ncuhome.Chat.IISChatServer.dll;"
+		ProjectReferences = "{AEAAB5CA-D9AD-4DE3-AB9D-3768ECC83FA4}|Ncuhome.Chat.DataGateWay.dll;{4D1D06E6-40C7-4302-8E42-C588B607D4D0}|Ncuhome.Chat.Model.dll;{D8CF5C3A-88E7-455C-A6CB-94CA8FEC1537}|Nuhome.FrameWork.dll;{41FCDB1D-1916-46FB-BFDC-198C76D2C14C}|Ncuhome.Chat.Core.dll;{F402C820-E8D4-47EC-A0B0-BBBD72567F75}|Ncuhome.Chat.DataService.dll;{C833B645-D2D3-480B-B251-D06247CBC927}|XmlDataProvider.dll;{1FEE1C51-4602-4823-91CC-1638F3B5C4E3}|Ncuhome.Chat.IISChatServer.dll;{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}|Ncuhome.Chat.SimpleThreadPool.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/Ncuhome.Chat.WebSite"
 		Debug.AspNetCompiler.PhysicalPath = "Ncuhome.Chat\Ncuhome.Chat.WebSite\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Ncuhome.Chat.WebSite\"
@@ -85,6 +85,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ncuhome.P2P", "Ncuhome.P2P", "{6C852FE3-6177-4656-B17B-F29FAD91A121}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ncuhome.P2P.Core", "Ncuhome.P2P\Ncuhome.P2P.Core\Ncuhome.P2P.Core.csproj", "{FAABC76E-8F4E-438E-96F5-1E6A13E1B96A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ncuhome.Chat.SimpleThreadPool", "Ncuhome.Chat\Ncuhome.Chat.SimpleThreadPool\Ncuhome.Chat.SimpleThreadPool.csproj", "{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -266,6 +268,16 @@ Global
 		{FAABC76E-8F4E-438E-96F5-1E6A13E1B96A}.Release|Mixed Platforms.Build.0 = Release|x86
 		{FAABC76E-8F4E-438E-96F5-1E6A13E1B96A}.Release|x86.ActiveCfg = Release|x86
 		{FAABC76E-8F4E-438E-96F5-1E6A13E1B96A}.Release|x86.Build.0 = Release|x86
+		{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{F1BB55A5-151B-4581-952F-84C7FB6EA5A0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -281,6 +293,7 @@ Global
 		{1EA5B4F6-828B-4B70-A924-590BCA56DD9B} = {3AA8B82A-F6AA-457E-B75A-B9C3ACC49C17}
 		{41FCDB1D-1916-46FB-BFDC-198C76D2C14C} = {3AA8B82A-F6AA-457E-B75A-B9C3ACC49C17}
 		{7801656B-3355-4623-8793-AC230A29C96C} = {3AA8B82A-F6AA-457E-B75A-B9C3ACC49C17}
+		{F1BB55A5-151B-4581-952F-84C7FB6EA5A0} = {3AA8B82A-F6AA-457E-B75A-B9C3ACC49C17}
 		{854B4E0A-1D53-42F8-AE78-4631DE4EA748} = {96949148-8558-4406-AB2F-38A6F3E10132}
 		{C6864F50-ED14-4AE3-81C8-C353C2FBF447} = {96949148-8558-4406-AB2F-38A6F3E10132}
 		{441AEC49-2ACD-41DA-8BB5-4F5DF047E98D} = {96949148-8558-4406-AB2F-38A6F3E10132}

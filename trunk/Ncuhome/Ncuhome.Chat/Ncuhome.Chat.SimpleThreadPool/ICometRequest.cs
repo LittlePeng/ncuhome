@@ -15,5 +15,7 @@ namespace Ncuhome.Chat.SimpleThreadPool
         /// 需要维护此状态，否则请求无法正常释放
         /// </summary>
         bool IsCompeled { get; set; }
+
+        int CometConcurrentCount { get; set; }
     }
 }

@@ -15,6 +15,8 @@ namespace Ncuhome.Chat.IISChatServer
         /// </summary>
         public DateTime BeginTime { get; set; }
 
+        public int CometConcurrentCount { get; set; }
+
         /// <summary>
         ///请求数据
         /// </summary>

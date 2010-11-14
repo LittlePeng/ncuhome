@@ -12,14 +12,25 @@ namespace Ncuhome.Chat.HttpChatServer
     public class ChatClientHost
     {
         static void Main()
-        {   
+        {
             //初始化线程池
             ChatSessionManager sessionManager = new ChatSessionManager();
             CometThreadPool.Start(sessionManager);
             StartHttpListener(88);
-            Console.ReadLine();
+            Console.WriteLine("Please leave Message Here,and press to post;");
+            while (true)
+            {
+                string message = Console.ReadLine();
+                msgId++;
+                CometThreadPool.HandleMessage(new Model.ChatMessageModel()
+                {
+                    Content = message,
+                    CreateTime = DateTime.Now,
+                    Id = msgId,
+                });
+            }
         }
-
+        static int msgId = 0;
         static void StartHttpListener(int port)
         {
 
@@ -34,12 +45,21 @@ namespace Ncuhome.Chat.HttpChatServer
         static void EndGetContext(IAsyncResult result)
         {
             HttpListener listener = result.AsyncState as HttpListener;
-            HttpListenerContext lc= listener.EndGetContext(result);
+            HttpListenerContext lc = listener.EndGetContext(result);
             //继续监听下一个
             listener.BeginGetContext(EndGetContext, listener);
 
             //将请求放置于线程池处理
-            HttpCometRequest request=new HttpCometRequest(lc.Request,lc.Response);
+
+            int lastId = 0;
+            if (!string.IsNullOrEmpty(lc.Request.QueryString["lastid"]))
+            {
+                int.TryParse(lc.Request.QueryString["lastid"], out lastId);
+            }
+
+            HttpCometRequest request = new HttpCometRequest(lc.Request, lc.Response);
+            request.LastId = lastId;
+
             CometThreadPool.QueueCometRequest(request);
         }
     }

@@ -33,7 +33,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Ncuhome.Chat.WebSite", "Ncu
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "1052"
+		VWDPort = "17194"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ncuhome.Chat.IISChatServer", "Ncuhome.Chat\Ncuhome.Chat.IISChatServer\Ncuhome.Chat.IISChatServer.csproj", "{1FEE1C51-4602-4823-91CC-1638F3B5C4E3}"

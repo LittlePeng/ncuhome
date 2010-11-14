@@ -51,6 +51,14 @@ namespace Ncuhome.Chat.SimpleThreadPool
             ChatThread.Start();
         }
 
+        public int RequestCount
+        {
+            get
+            {
+                return CometRequestList.Count*CometThreadPool.ThreadCount;
+            }
+        }
+
         #region 处理
         private void CometThreadStart()
         {
@@ -186,6 +194,8 @@ namespace Ncuhome.Chat.SimpleThreadPool
         /// </summary>
         public void EnQueueCometRequest(ICometRequest request)
         {
+            request.CometConcurrentCount = RequestCount;
+
             //需要立即处理请求，如果有数据及立即返回,无数据才加入队列
             HandleCurrentRequest(request);
 

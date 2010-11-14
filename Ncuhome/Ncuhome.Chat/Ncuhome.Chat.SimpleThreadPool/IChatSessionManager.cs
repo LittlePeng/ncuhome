@@ -15,6 +15,6 @@ namespace Ncuhome.Chat.SimpleThreadPool
         /// <summary>
         /// 公聊
         /// </summary>
-        bool DoChatSession(ICometRequest cometRequest, ChatMessageModel[] messages, FinishCallback cb);
+        void DoChatSession(ICometRequest cometRequest, IEnumerable<ChatMessageModel> messages, FinishCallback cb);
     }
 }

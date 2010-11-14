@@ -126,19 +126,16 @@ namespace Ncuhome.Chat.SimpleThreadPool
         /// <summary>
         /// 立即处理请求(返回时候得到处理)
         /// </summary>
-        bool HandleCurrentRequest(ICometRequest request)
+        void HandleCurrentRequest(ICometRequest request)
         {
             lock (MessageSyncRoot)
             {
-                return SessionManager.DoChatSession(request, CometChatMessage.ToArray(),
-                    (req) => 
-                    {
-                        if (req.IsFetchedMessage)
-                        {
-                            req.FinishCometRequest();
-                        }
-                    }
-                    );
+                //处理一个请求，不对MessageList copy了
+                SessionManager.DoChatSession(request,CometChatMessage ,null );
+              if(request.IsCompeled)
+              {
+                    request.FinishCometRequest();
+                }
             }
         }
         #endregion
@@ -176,7 +173,7 @@ namespace Ncuhome.Chat.SimpleThreadPool
         /// </summary>
         public void FinishCometRequest(ICometRequest request)
         {
-            if (request.IsFetchedMessage||(DateTime.Now - request.BeginTime).TotalSeconds >= RequestTimeOut)
+            if (request.IsCompeled||(DateTime.Now - request.BeginTime).TotalSeconds >= RequestTimeOut)
             {
                 DeQueueCometRequest(request);
 
@@ -190,7 +187,9 @@ namespace Ncuhome.Chat.SimpleThreadPool
         public void EnQueueCometRequest(ICometRequest request)
         {
             //需要立即处理请求，如果有数据及立即返回,无数据才加入队列
-            if (HandleCurrentRequest(request))
+            HandleCurrentRequest(request);
+
+            if (request.IsCompeled)
             {
                 return;
             }

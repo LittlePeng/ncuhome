@@ -30,6 +30,10 @@ namespace Ncuhome.Chat.IISChatServer
         public AsyncCallback CallBack { get; set; }
 
         public object AsyncState { get; set; }
+           
+        bool ICometRequest.IsCompeled{get;set;}
+
+        bool IAsyncResult.IsCompleted { get{return false;} }
 
         public System.Threading.WaitHandle AsyncWaitHandle
         {
@@ -40,9 +44,6 @@ namespace Ncuhome.Chat.IISChatServer
         {
             get { return false; }
         }
-
-        public bool IsCompleted { get; set; }
-        public bool IsFetchedMessage { get; set; }
 
         public CometAsyncResult(ChatRequest chatRequest, HttpContext context, AsyncCallback callBack, object asyncState)
         {
@@ -68,14 +69,17 @@ namespace Ncuhome.Chat.IISChatServer
         public void FinishCometRequest()
         {
             //回调结束连接
-            this.IsCompleted = true;
+            if (this.Response.Message.Count() == 0)
+            {
+                this.Response.IsTimeOut = true;
+            }
 
-            this.Response.IsTimeOut =!IsFetchedMessage;
-        
             if (CallBack != null)
             {
                 CallBack(this);
             }
         }
+
+        
     }
 }

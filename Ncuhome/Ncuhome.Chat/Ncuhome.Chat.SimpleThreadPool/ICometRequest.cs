@@ -11,6 +11,9 @@ namespace Ncuhome.Chat.SimpleThreadPool
         
         void FinishCometRequest();
 
-        bool IsFetchedMessage { get; set; }
+        /// <summary>
+        /// 需要维护此状态，否则请求无法正常释放
+        /// </summary>
+        bool IsCompeled { get; set; }
     }
 }

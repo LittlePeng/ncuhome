@@ -1,5 +1,0 @@
-E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.DataGateWay\bin\Debug\Ncuhome.Chat.DataGateWay.dll
-E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.DataGateWay\bin\Debug\Ncuhome.Chat.DataGateWay.pdb
-E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.DataGateWay\obj\Debug\ResolveAssemblyReference.cache
-E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.DataGateWay\obj\Debug\Ncuhome.Chat.DataGateWay.dll
-E:\正在开发\Ncuhome\Ncuhome.Chat\Ncuhome.Chat.DataGateWay\obj\Debug\Ncuhome.Chat.DataGateWay.pdb

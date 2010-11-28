@@ -40,14 +40,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HttpContent.cs" />
-    <Compile Include="HttpRequest.cs" />
-    <Compile Include="HttpResonse.cs" />
-    <Compile Include="HttpRuntime.cs" />
-    <Compile Include="HttpWebHost.cs" />
-    <Compile Include="HttpWebRequest.cs" />
-    <Compile Include="HttpWebResponse.cs" />
+    <Compile Include="CometHttpContent.cs" />
+    <Compile Include="CometHttpRequest.cs" />
+    <Compile Include="CometHttpResonse.cs" />
+    <Compile Include="CometHttpListener.cs" />
+    <Compile Include="CometHttpSession.cs" />
+    <Compile Include="CometHttpWebHost.cs" />
+    <Compile Include="HttpHeader.cs" />
+    <Compile Include="HttpHeaderCollection.cs" />
+    <Compile Include="HttpServerSetting.cs" />
+    <Compile Include="HttpStatusCode.cs" />
+    <None Include="Server-‘.cs" />
+    <Compile Include="SimpleHttpWebRequest.cs" />
+    <Compile Include="simpleHttpWebResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\BufferManager.cs" />
+    <Compile Include="Utility\CmppMessageReader.cs" />
+    <Compile Include="Utility\CmppMessageWriter.cs" />
+    <Compile Include="Utility\DataConvert.cs" />
+    <Compile Include="Utility\GlobalSettings.cs" />
+    <Compile Include="Utility\InterlockedCounter.cs" />
+    <Compile Include="Utility\Singleton.cs" />
+    <Compile Include="Utility\SocketAsyncEventArgsPool.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

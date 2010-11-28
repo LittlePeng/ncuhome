@@ -49,29 +49,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpFileUpload", "Ncuhome.Up
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{955099B8-A90D-4A28-8898-2E386F35BF2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleApplication", "Test\TestConsoleApplication\TestConsoleApplication.csproj", "{01BD7466-6725-41A8-A256-4B0CDE0033AD}"
-EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TestWebSite", "Test\TestWebSite\", "{EEC00C24-4B33-4A74-8D86-DDD770D474EB}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/TestWebSite"
-		Debug.AspNetCompiler.PhysicalPath = "Test\TestWebSite\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\TestWebSite\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/TestWebSite"
-		Release.AspNetCompiler.PhysicalPath = "Test\TestWebSite\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\TestWebSite\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "1072"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ncuhome.Chat.Core", "Ncuhome.Chat\Ncuhome.Chat.Core\Ncuhome.Chat.Core.csproj", "{41FCDB1D-1916-46FB-BFDC-198C76D2C14C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ncuhome.Chat.Test", "Ncuhome.Chat\Ncuhome.Chat.Test\Ncuhome.Chat.Test.csproj", "{7801656B-3355-4623-8793-AC230A29C96C}"
@@ -184,26 +161,6 @@ Global
 		{441AEC49-2ACD-41DA-8BB5-4F5DF047E98D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{441AEC49-2ACD-41DA-8BB5-4F5DF047E98D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{441AEC49-2ACD-41DA-8BB5-4F5DF047E98D}.Release|x86.ActiveCfg = Release|Any CPU
-		{01BD7466-6725-41A8-A256-4B0CDE0033AD}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{01BD7466-6725-41A8-A256-4B0CDE0033AD}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{01BD7466-6725-41A8-A256-4B0CDE0033AD}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{01BD7466-6725-41A8-A256-4B0CDE0033AD}.Debug|x86.ActiveCfg = Debug|x86
-		{01BD7466-6725-41A8-A256-4B0CDE0033AD}.Debug|x86.Build.0 = Debug|x86
-		{01BD7466-6725-41A8-A256-4B0CDE0033AD}.Release|Any CPU.ActiveCfg = Release|x86
-		{01BD7466-6725-41A8-A256-4B0CDE0033AD}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{01BD7466-6725-41A8-A256-4B0CDE0033AD}.Release|Mixed Platforms.Build.0 = Release|x86
-		{01BD7466-6725-41A8-A256-4B0CDE0033AD}.Release|x86.ActiveCfg = Release|x86
-		{01BD7466-6725-41A8-A256-4B0CDE0033AD}.Release|x86.Build.0 = Release|x86
-		{EEC00C24-4B33-4A74-8D86-DDD770D474EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEC00C24-4B33-4A74-8D86-DDD770D474EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEC00C24-4B33-4A74-8D86-DDD770D474EB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{EEC00C24-4B33-4A74-8D86-DDD770D474EB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{EEC00C24-4B33-4A74-8D86-DDD770D474EB}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{EEC00C24-4B33-4A74-8D86-DDD770D474EB}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEC00C24-4B33-4A74-8D86-DDD770D474EB}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{EEC00C24-4B33-4A74-8D86-DDD770D474EB}.Release|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{EEC00C24-4B33-4A74-8D86-DDD770D474EB}.Release|Mixed Platforms.Build.0 = Debug|Any CPU
-		{EEC00C24-4B33-4A74-8D86-DDD770D474EB}.Release|x86.ActiveCfg = Debug|Any CPU
 		{41FCDB1D-1916-46FB-BFDC-198C76D2C14C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{41FCDB1D-1916-46FB-BFDC-198C76D2C14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41FCDB1D-1916-46FB-BFDC-198C76D2C14C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -271,8 +228,6 @@ Global
 		{854B4E0A-1D53-42F8-AE78-4631DE4EA748} = {96949148-8558-4406-AB2F-38A6F3E10132}
 		{C6864F50-ED14-4AE3-81C8-C353C2FBF447} = {96949148-8558-4406-AB2F-38A6F3E10132}
 		{441AEC49-2ACD-41DA-8BB5-4F5DF047E98D} = {96949148-8558-4406-AB2F-38A6F3E10132}
-		{01BD7466-6725-41A8-A256-4B0CDE0033AD} = {955099B8-A90D-4A28-8898-2E386F35BF2C}
-		{EEC00C24-4B33-4A74-8D86-DDD770D474EB} = {955099B8-A90D-4A28-8898-2E386F35BF2C}
 		{FAABC76E-8F4E-438E-96F5-1E6A13E1B96A} = {6C852FE3-6177-4656-B17B-F29FAD91A121}
 	EndGlobalSection
 EndGlobal

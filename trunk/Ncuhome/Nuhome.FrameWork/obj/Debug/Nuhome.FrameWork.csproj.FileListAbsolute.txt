@@ -1,5 +1,0 @@
-E:\正在开发\Ncuhome\Nuhome.FrameWork\bin\Debug\Nuhome.FrameWork.dll
-E:\正在开发\Ncuhome\Nuhome.FrameWork\bin\Debug\Nuhome.FrameWork.pdb
-E:\正在开发\Ncuhome\Nuhome.FrameWork\obj\Debug\ResolveAssemblyReference.cache
-E:\正在开发\Ncuhome\Nuhome.FrameWork\obj\Debug\Nuhome.FrameWork.dll
-E:\正在开发\Ncuhome\Nuhome.FrameWork\obj\Debug\Nuhome.FrameWork.pdb

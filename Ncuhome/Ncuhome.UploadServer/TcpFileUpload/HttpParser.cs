@@ -16,6 +16,6 @@ namespace Ncuhome.TcpFileUpload
         public bool TryParserHeader()
         {
             return false;
-        }
+        }   
     }
 }

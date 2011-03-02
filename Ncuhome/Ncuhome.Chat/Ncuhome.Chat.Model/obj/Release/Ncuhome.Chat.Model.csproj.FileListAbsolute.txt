@@ -1,0 +1,5 @@
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.Model\bin\Release\Ncuhome.Chat.Model.dll
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.Model\bin\Release\Ncuhome.Chat.Model.pdb
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.Model\obj\Release\ResolveAssemblyReference.cache
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.Model\obj\Release\Ncuhome.Chat.Model.dll
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.Model\obj\Release\Ncuhome.Chat.Model.pdb

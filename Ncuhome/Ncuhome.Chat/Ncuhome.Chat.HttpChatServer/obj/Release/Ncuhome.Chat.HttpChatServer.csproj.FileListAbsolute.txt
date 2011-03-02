@@ -1,0 +1,9 @@
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.HttpChatServer\bin\Release\Ncuhome.Chat.HttpChatServer.exe
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.HttpChatServer\bin\Release\Ncuhome.Chat.HttpChatServer.pdb
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.HttpChatServer\bin\Release\Ncuhome.Chat.Model.dll
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.HttpChatServer\bin\Release\Ncuhome.Chat.SimpleThreadPool.dll
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.HttpChatServer\bin\Release\Ncuhome.Chat.Model.pdb
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.HttpChatServer\bin\Release\Ncuhome.Chat.SimpleThreadPool.pdb
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.HttpChatServer\obj\Release\ResolveAssemblyReference.cache
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.HttpChatServer\obj\Release\Ncuhome.Chat.HttpChatServer.exe
+E:\开发\ncuhome\Ncuhome.Chat\Ncuhome.Chat.HttpChatServer\obj\Release\Ncuhome.Chat.HttpChatServer.pdb

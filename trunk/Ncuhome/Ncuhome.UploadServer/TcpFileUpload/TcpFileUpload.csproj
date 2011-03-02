@@ -8,7 +8,7 @@
     <ProjectGuid>{441AEC49-2ACD-41DA-8BB5-4F5DF047E98D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TcpFileUpload</RootNamespace>
+    <RootNamespace>Ncuhome.TcpFileUpload</RootNamespace>
     <AssemblyName>TcpFileUpload</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,8 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="AsySocketListener.cs" />
+    <Compile Include="ISHConnection.cs" />
+    <Compile Include="ISHListener.cs" />
+    <Compile Include="SHConnection.cs" />
+    <Compile Include="SHConnectionCreatedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SHConnectionCreatedHandler.cs" />
+    <Compile Include="SHListener.cs" />
+    <Compile Include="SocketAsyncEventArgsPool.cs" />
+    <Compile Include="SocketConnectionCreatedHandle.cs" />
+    <Compile Include="SocketConnectionEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

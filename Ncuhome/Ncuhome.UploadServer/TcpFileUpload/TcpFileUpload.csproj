@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="AsyncSocketConnection.cs" />
     <Compile Include="AsySocketListener.cs" />
+    <Compile Include="HttpFileParser.cs" />
     <Compile Include="HttpHeaderBuffer.cs" />
     <Compile Include="HttpParser.cs" />
     <Compile Include="ISHConnection.cs" />

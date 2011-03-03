@@ -9,7 +9,9 @@ namespace Ncuhome.TcpFileUpload
     {
         HttpHeaderBuffer headerBuffer;
 
-        event EventHandler OnHeadParsed;
+        const int headerMaxLength = 8 * 1024;
+
+        event EventHandler OnHeaderParsed;
         event EventHandler OnParsedError;
         event EventHandler OnParsedCompleted;
 

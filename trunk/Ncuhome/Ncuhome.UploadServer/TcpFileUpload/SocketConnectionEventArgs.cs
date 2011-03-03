@@ -7,7 +7,7 @@ using System.Net.Sockets;
 
 namespace Ncuhome.TcpFileUpload
 {
-    class SocketConnectionEventArgs : EventArgs
+    public class SocketConnectionEventArgs : EventArgs
     {
         private Socket _socket;
         public Socket Socket { get { return _socket; } }

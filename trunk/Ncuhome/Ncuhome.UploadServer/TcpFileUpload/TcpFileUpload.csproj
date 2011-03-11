@@ -42,19 +42,21 @@
   <ItemGroup>
     <Compile Include="AsyncSocketConnection.cs" />
     <Compile Include="AsySocketListener.cs" />
+    <Compile Include="FormEncType.cs" />
     <Compile Include="HttpFileParser.cs" />
-    <Compile Include="HttpHeaderBuffer.cs" />
+    <Compile Include="HttpHeader.cs" />
+    <Compile Include="HttpStreamBuffer.cs" />
     <Compile Include="HttpParser.cs" />
     <Compile Include="ISHConnection.cs" />
     <Compile Include="ISHListener.cs" />
     <Compile Include="SHSocket.cs" />
-    <Compile Include="SHConnectionCreatedEventArgs.cs" />
+    <Compile Include="Handler\SHConnectionCreatedEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SHConnectionCreatedHandler.cs" />
+    <Compile Include="Handler\SHConnectionCreatedHandler.cs" />
     <Compile Include="SHListener.cs" />
     <Compile Include="SocketAsyncEventArgsPool.cs" />
-    <Compile Include="SocketConnectionCreatedHandle.cs" />
-    <Compile Include="SocketConnectionEventArgs.cs" />
+    <Compile Include="Handler\SocketConnectionCreatedHandle.cs" />
+    <Compile Include="Handler\SocketConnectionEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

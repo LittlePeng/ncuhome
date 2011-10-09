@@ -524,8 +524,6 @@ namespace MySql.Data.MySqlClient
 		#endregion
 
 		#region Async Methods
-
-		internal delegate void AsyncDelegate(int type, CommandBehavior behavior);
 		internal Exception thrownException;
 
 		private static string TrimSemicolons(string sql)
@@ -557,112 +555,50 @@ namespace MySql.Data.MySqlClient
 			}
 		}
 
-		/// <summary>
-		/// Initiates the asynchronous execution of the SQL statement or stored procedure 
-		/// that is described by this <see cref="MySqlCommand"/>, and retrieves one or more 
-		/// result sets from the server. 
-		/// </summary>
-		/// <returns>An <see cref="IAsyncResult"/> that can be used to poll, wait for results, 
-		/// or both; this value is also needed when invoking EndExecuteReader, 
-		/// which returns a <see cref="MySqlDataReader"/> instance that can be used to retrieve 
-		/// the returned rows. </returns>
-		public IAsyncResult BeginExecuteReader()
-		{
-			return BeginExecuteReader(CommandBehavior.Default);
-		}
-
-		/// <summary>
-		/// Initiates the asynchronous execution of the SQL statement or stored procedure 
-		/// that is described by this <see cref="MySqlCommand"/> using one of the 
-		/// <b>CommandBehavior</b> values. 
-		/// </summary>
-		/// <param name="behavior">One of the <see cref="CommandBehavior"/> values, indicating 
-		/// options for statement execution and data retrieval.</param>
-		/// <returns>An <see cref="IAsyncResult"/> that can be used to poll, wait for results, 
-		/// or both; this value is also needed when invoking EndExecuteReader, 
-		/// which returns a <see cref="MySqlDataReader"/> instance that can be used to retrieve 
-		/// the returned rows. </returns>
-		public IAsyncResult BeginExecuteReader(CommandBehavior behavior)
-		{
-			AsyncDelegate del = new AsyncDelegate(AsyncExecuteWrapper);
-			asyncResult = del.BeginInvoke(1, behavior, null, null);
-			return asyncResult;
-		}
-
         public IAsyncResult BeginExecuteReader(AsyncCallback callback, object stateObject, CommandBehavior behavior) {
-            AsyncDelegate del = new AsyncDelegate(AsyncExecuteWrapper);
-            return del.BeginInvoke(1, behavior, callback, stateObject);
+            MysqlAsyncResult result = new MysqlAsyncResult();
+            result.AsyncState = stateObject;
+
+            return result;
         }
 
-		/// <summary>
-		/// Finishes asynchronous execution of a SQL statement, returning the requested 
-		/// <see cref="MySqlDataReader"/>.
-		/// </summary>
-		/// <param name="result">The <see cref="IAsyncResult"/> returned by the call to 
-		/// <see cref="BeginExecuteReader()"/>.</param>
-		/// <returns>A <b>MySqlDataReader</b> object that can be used to retrieve the requested rows. </returns>
-		public MySqlDataReader EndExecuteReader(IAsyncResult result)
-		{
-			result.AsyncWaitHandle.WaitOne();
-			if (thrownException != null)
-				throw thrownException;
-			return connection.Reader;
-		}
+        public MySqlDataReader EndExecuteReader(IAsyncResult result)
+        {
+            if (!result.IsCompleted)
+                result.AsyncWaitHandle.WaitOne();
+         
+            return connection.Reader;
+        }
 
-		/// <summary>
-		/// Initiates the asynchronous execution of the SQL statement or stored procedure 
-		/// that is described by this <see cref="MySqlCommand"/>. 
-		/// </summary>
-		/// <param name="callback">
-		/// An <see cref="AsyncCallback"/> delegate that is invoked when the command's 
-		/// execution has completed. Pass a null reference (<b>Nothing</b> in Visual Basic) 
-		/// to indicate that no callback is required.</param>
-		/// <param name="stateObject">A user-defined state object that is passed to the 
-		/// callback procedure. Retrieve this object from within the callback procedure 
-		/// using the <see cref="IAsyncResult.AsyncState"/> property.</param>
-		/// <returns>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, 
-		/// or both; this value is also needed when invoking <see cref="EndExecuteNonQuery"/>, 
-		/// which returns the number of affected rows. </returns>
+        public IAsyncResult BeginExecuteNonQuery()
+        {
+            return BeginExecuteNonQuery(null, null, CommandBehavior.CloseConnection);
+        }
+
+        public IAsyncResult BeginExecuteNonQuery(AsyncCallback callback)
+        {
+            return BeginExecuteNonQuery(callback, null, CommandBehavior.CloseConnection);
+        }
+
 		public IAsyncResult BeginExecuteNonQuery(AsyncCallback callback, object stateObject)
 		{
-			AsyncDelegate del = new AsyncDelegate(AsyncExecuteWrapper);
-			asyncResult = del.BeginInvoke(2, CommandBehavior.Default, 
-				callback, stateObject);
-			return asyncResult;
+            return BeginExecuteNonQuery(callback, stateObject, CommandBehavior.CloseConnection);
 		}
 
         public IAsyncResult BeginExecuteNonQuery(AsyncCallback callback, object stateObject, CommandBehavior behavior) {
-            AsyncDelegate del = new AsyncDelegate(AsyncExecuteWrapper);
-            return del.BeginInvoke(2, behavior, callback, stateObject);
+            MysqlAsyncResult result = new MysqlAsyncResult();
+            result.AsyncState = stateObject;
+
+            return result;
         }
 
-		/// <summary>
-		/// Initiates the asynchronous execution of the SQL statement or stored procedure 
-		/// that is described by this <see cref="MySqlCommand"/>. 
-		/// </summary>
-		/// <returns>An <see cref="IAsyncResult"/> that can be used to poll or wait for results, 
-		/// or both; this value is also needed when invoking <see cref="EndExecuteNonQuery"/>, 
-		/// which returns the number of affected rows. </returns>
-		public IAsyncResult BeginExecuteNonQuery()
-		{
-			AsyncDelegate del = new AsyncDelegate(AsyncExecuteWrapper);
-			asyncResult = del.BeginInvoke(2, CommandBehavior.Default, null, null);
-			return asyncResult;
-		}
+        public int EndExecuteNonQuery(IAsyncResult asyncResult)
+        {
+            if (!asyncResult.IsCompleted)
+                asyncResult.AsyncWaitHandle.WaitOne();
 
-		/// <summary>
-		/// Finishes asynchronous execution of a SQL statement. 
-		/// </summary>
-		/// <param name="asyncResult">The <see cref="IAsyncResult"/> returned by the call 
-		/// to <see cref="BeginExecuteNonQuery()"/>.</param>
-		/// <returns></returns>
-		public int EndExecuteNonQuery(IAsyncResult asyncResult)
-		{
-			asyncResult.AsyncWaitHandle.WaitOne();
-			if (thrownException != null)
-				throw thrownException;
-			return (int)updatedRowCount;
-		}
+            return (int)updatedRowCount;
+        }
 
 		#endregion
 

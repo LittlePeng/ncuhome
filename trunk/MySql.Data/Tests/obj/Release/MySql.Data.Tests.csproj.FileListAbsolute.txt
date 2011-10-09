@@ -1,9 +1,0 @@
-D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Tests\obj\Release\ResolveAssemblyReference.cache
-D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Tests\bin\Release\MySql.Data.Tests.dll
-D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Tests\bin\Release\MySql.Data.Tests.pdb
-D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Tests\bin\Release\MySql.Data.dll
-D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Tests\bin\Release\nunit.framework.dll
-D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Tests\bin\Release\MySql.Data.xml
-D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Tests\bin\Release\nunit.framework.xml
-D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Tests\obj\Release\MySql.Data.Tests.dll
-D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Tests\obj\Release\MySql.Data.Tests.pdb

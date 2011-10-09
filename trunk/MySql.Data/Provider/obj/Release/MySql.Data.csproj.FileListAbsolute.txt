@@ -1,0 +1,15 @@
+D:\Research\mysql-connector-net-5.2.6-src\MySql.Data\Provider\bin\Release\MySql.Data.dll
+D:\Research\mysql-connector-net-5.2.6-src\MySql.Data\Provider\bin\Release\MySql.Data.xml
+D:\Research\mysql-connector-net-5.2.6-src\MySql.Data\Provider\obj\Release\ResolveAssemblyReference.cache
+D:\Research\mysql-connector-net-5.2.6-src\MySql.Data\Provider\obj\Release\MySql.Data.MySqlClient.Properties.Resources.resources
+D:\Research\mysql-connector-net-5.2.6-src\MySql.Data\Provider\obj\Release\MySql.Data.csproj.GenerateResource.Cache
+D:\Research\mysql-connector-net-5.2.6-src\MySql.Data\Provider\obj\Release\MySql.Data.dll
+D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Provider\bin\Release\MySql.Data.dll
+D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Provider\bin\Release\MySql.Data.xml
+D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Provider\obj\Release\ResolveAssemblyReference.cache
+D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Provider\obj\Release\MySql.Data.MySqlClient.Properties.Resources.resources
+D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Provider\obj\Release\GenerateResource.read.1.tlog
+D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Provider\obj\Release\GenerateResource.write.1.tlog
+D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Provider\obj\Release\MySql.Data.dll
+D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Provider\obj\Release\ResGen.read.1.tlog
+D:\Research\mysql-connector-net-5.2.6-src - 2010\MySql.Data\Provider\obj\Release\ResGen.write.1.tlog

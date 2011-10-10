@@ -834,26 +834,55 @@ namespace MySql.Data.MySqlClient
 		/// <returns>-1 if no more results exist, >= 0 for select results</returns>
 		private long GetResultSet()
 		{
-			while (true)
-			{
-				ulong affectedRowsTemp = 0;
-				long fieldCount = driver.ReadResult(ref affectedRowsTemp, ref lastInsertId);
-				if (fieldCount > 0)
-					return fieldCount;
-				else if (fieldCount == 0)
-				{
-					command.lastInsertedId = lastInsertId;
-					if (affectedRows == -1)
-						affectedRows = (long)affectedRowsTemp;
-					else
-						affectedRows += (long)affectedRowsTemp;
-				}
-				else if (fieldCount == -1)
-					if (!statement.ExecuteNext())
-						break;
-			}
-			return -1;
+            while (true)
+            {
+                ulong affectedRowsTemp = 0;
+                long fieldCount = driver.ReadResult(ref affectedRowsTemp, ref lastInsertId);
+                if (fieldCount > 0)
+                    return fieldCount;
+                else if (fieldCount == 0)
+                {
+                    command.lastInsertedId = lastInsertId;
+                    if (affectedRows == -1)
+                        affectedRows = (long)affectedRowsTemp;
+                    else
+                        affectedRows += (long)affectedRowsTemp;
+                }
+                else if (fieldCount == -1)
+                    if (!statement.ExecuteNext())
+                        break;
+            }
+            return -1;
 		}
+
+        internal void  BeginNextResult()
+        {
+            driver.BeginReadResult(command);
+        }
+
+        internal void EndNextResult()
+        {
+            driver.BeginReadResult(command);
+            while (true)
+            {
+                ulong affectedRowsTemp = 0;
+                long fieldCount = driver.ReadResult(ref affectedRowsTemp, ref lastInsertId);
+                if (fieldCount > 0)
+                    return fieldCount;
+                else if (fieldCount == 0)
+                {
+                    command.lastInsertedId = lastInsertId;
+                    if (affectedRows == -1)
+                        affectedRows = (long)affectedRowsTemp;
+                    else
+                        affectedRows += (long)affectedRowsTemp;
+                }
+                else if (fieldCount == -1)
+                    if (!statement.ExecuteNext())
+                        break;
+            }
+            return -1;
+        }
 
 		/// <summary>
 		/// Advances the data reader to the next result, when reading the results of batch SQL statements.

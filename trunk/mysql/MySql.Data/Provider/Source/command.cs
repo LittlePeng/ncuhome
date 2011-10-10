@@ -303,6 +303,19 @@ namespace MySql.Data.MySqlClient
 				throw new MySqlException("Stored procedures are not supported on this version of MySQL");
 		}
 
+        private static string TrimSemicolons(string sql)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder(sql);
+            int start = 0;
+            while (sb[start] == ';')
+                start++;
+
+            int end = sb.Length - 1;
+            while (sb[end] == ';')
+                end--;
+            return sb.ToString(start, end - start + 1);
+        }
+
 		/// <include file='docs/mysqlcommand.xml' path='docs/ExecuteNonQuery/*'/>
 		public override int ExecuteNonQuery()
 		{
@@ -526,35 +539,6 @@ namespace MySql.Data.MySqlClient
 		#region Async Methods
 		internal Exception thrownException;
 
-		private static string TrimSemicolons(string sql)
-		{
-			System.Text.StringBuilder sb = new System.Text.StringBuilder(sql);
-			int start = 0;
-			while (sb[start] == ';')
-				start++;
-
-			int end = sb.Length - 1;
-			while (sb[end] == ';')
-				end--;
-			return sb.ToString(start, end - start + 1);
-		}
-
-		internal void AsyncExecuteWrapper(int type, CommandBehavior behavior)
-		{
-			thrownException = null;
-			try
-			{
-				if (type == 1)
-					ExecuteReader(behavior);
-				else
-					ExecuteNonQuery();
-			}
-			catch (Exception ex)
-			{
-				thrownException = ex;
-			}
-		}
-
         public IAsyncResult BeginExecuteReader(AsyncCallback callback, object stateObject, CommandBehavior behavior) {
             MysqlAsyncResult result = new MysqlAsyncResult();
             result.AsyncState = stateObject;
@@ -569,7 +553,7 @@ namespace MySql.Data.MySqlClient
          
             return connection.Reader;
         }
-
+#region NoQuery,Scalar
         public IAsyncResult BeginExecuteNonQuery()
         {
             return BeginExecuteNonQuery(null, null, CommandBehavior.CloseConnection);
@@ -585,11 +569,9 @@ namespace MySql.Data.MySqlClient
             return BeginExecuteNonQuery(callback, stateObject, CommandBehavior.CloseConnection);
 		}
 
-        public IAsyncResult BeginExecuteNonQuery(AsyncCallback callback, object stateObject, CommandBehavior behavior) {
-            MysqlAsyncResult result = new MysqlAsyncResult();
-            result.AsyncState = stateObject;
-
-            return result;
+        public IAsyncResult BeginExecuteNonQuery(AsyncCallback callback, object stateObject, CommandBehavior behavior)
+        {
+            return BeginExecuteReader(callback, stateObject, behavior);
         }
 
         public int EndExecuteNonQuery(IAsyncResult asyncResult)
@@ -597,14 +579,66 @@ namespace MySql.Data.MySqlClient
             if (!asyncResult.IsCompleted)
                 asyncResult.AsyncWaitHandle.WaitOne();
 
+            lastInsertedId = -1;
+            updatedRowCount = -1;
+
+            MySqlDataReader reader = EndExecuteReader(asyncResult);
+            if (reader != null)
+            {
+                reader.Close();
+                lastInsertedId = reader.InsertedId;
+                updatedRowCount = reader.RecordsAffected;
+            }
+
             return (int)updatedRowCount;
         }
 
-		#endregion
+        public IAsyncResult BeginExecuteScalar(AsyncCallback callback)
+        {
+            return BeginExecuteScalar(callback, null, CommandBehavior.CloseConnection);
+        }
 
-		#region Private Methods
+        public IAsyncResult BeginExecuteScalar(AsyncCallback callback, object stateObject)
+        {
+            return BeginExecuteScalar(callback, stateObject, CommandBehavior.CloseConnection);
+        }
 
-		/*		private ArrayList PrepareSqlBuffers(string sql)
+        public IAsyncResult BeginExecuteScalar(AsyncCallback callback, object stateObject, CommandBehavior behavior)
+        {
+            return BeginExecuteReader(callback, stateObject, behavior);
+        }
+
+        public object EndExecuteScalar(IAsyncResult asyncResult)
+        {
+            lastInsertedId = -1;
+            object val = null;
+
+            MySqlDataReader reader = EndExecuteReader(asyncResult);
+            if (reader == null) return null;
+
+            try
+            {
+                if (reader.Read())
+                    val = reader.GetValue(0);
+            }
+            finally
+            {
+                if (reader != null)
+                {
+                    reader.Close();
+                    lastInsertedId = reader.InsertedId;
+                }
+                reader = null;
+            }
+
+            return val;
+        }
+#endregion
+        #endregion
+
+        #region Private Methods
+
+        /*		private ArrayList PrepareSqlBuffers(string sql)
 				{
 					ArrayList buffers = new ArrayList();
 					MySqlStreamWriter writer = new MySqlStreamWriter(new MemoryStream(), connection.Encoding);

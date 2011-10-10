@@ -23,5 +23,7 @@ namespace MySql.Data.MySqlClient
         }
 
         public bool IsCompleted { get; set; }
+
+        public MySqlDataReader DataReader { get; set; }
     }
 }

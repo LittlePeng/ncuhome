@@ -595,6 +595,15 @@ namespace MySql.Data.MySqlClient
             return fieldCount;
         }
 
+        public void BeginReadResult(MySqlCommand cmd)
+        { 
+        
+        }
+
+        public long EndReadResult(ref ulong affectedRows, ref long lastInsertId)
+        { 
+        
+        }
         /// <summary>
         /// Sends the specified file to the server. 
         /// This supports the LOAD DATA LOCAL INFILE

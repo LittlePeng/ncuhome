@@ -538,10 +538,17 @@ namespace MySql.Data.MySqlClient
 
 		#region Async Methods
 		internal Exception thrownException;
+        private IAsyncResult _cmdAsyncResult;
+        public IAsyncResult CmdAsyncResult { get { return _cmdAsyncResult; } }
+        private AsyncCallback _cmdAsyncCallback;
+        public AsyncCallback CmdAsyncCallback { get { return _cmdAsyncCallback; } }
 
         public IAsyncResult BeginExecuteReader(AsyncCallback callback, object stateObject, CommandBehavior behavior) {
             MysqlAsyncResult result = new MysqlAsyncResult();
             result.AsyncState = stateObject;
+
+            _cmdAsyncCallback = callback;
+            _cmdAsyncResult = result;
 
             return result;
         }
@@ -550,8 +557,105 @@ namespace MySql.Data.MySqlClient
         {
             if (!result.IsCompleted)
                 result.AsyncWaitHandle.WaitOne();
-         
+
+            InnerEndExecuteReader(result);
+
             return connection.Reader;
+        }
+
+        /// <include file='docs/mysqlcommand.xml' path='docs/ExecuteReader1/*'/>
+        private void InnerBeginExecuteReader(CommandBehavior behavior)
+        {
+            lastInsertedId = -1;
+            CheckState();
+
+            if (cmdText == null ||
+                 cmdText.Trim().Length == 0)
+                throw new InvalidOperationException(Resources.CommandTextNotInitialized);
+
+            string sql = TrimSemicolons(cmdText);
+
+            // now we check to see if we are executing a query that is buggy
+            // in 4.1
+            connection.IsExecutingBuggyQuery = false;
+            if (!connection.driver.Version.isAtLeast(5, 0, 0) &&
+                connection.driver.Version.isAtLeast(4, 1, 0))
+            {
+                string snippet = sql;
+                if (snippet.Length > 17)
+                    snippet = sql.Substring(0, 17);
+                snippet = snippet.ToLower(CultureInfo.InvariantCulture);
+                connection.IsExecutingBuggyQuery =
+                    snippet.StartsWith("describe") ||
+                    snippet.StartsWith("show table status");
+            }
+
+            if (statement == null || !statement.IsPrepared)
+            {
+                if (CommandType == CommandType.StoredProcedure)
+                    statement = new StoredProcedure(this, sql);
+                else
+                    statement = new PreparableStatement(this, sql);
+            }
+
+            // stored procs are the only statement type that need do anything during resolve
+            statement.Resolve();
+
+            // Now that we have completed our resolve step, we can handle our
+            // command behaviors
+            HandleCommandBehaviors(behavior);
+
+            updatedRowCount = -1;
+
+            Timer timer = null;
+            try
+            {
+                MySqlDataReader reader = new MySqlDataReader(this, statement, behavior);
+
+                // start a threading timer on our command timeout 
+                timedOut = false;
+                canceled = false;
+
+                // execute the statement
+                statement.Execute();
+
+                //TODO 超时需要特殊处理
+                // start a timeout timer
+                if (connection.driver.Version.isAtLeast(5, 0, 0) &&
+                     commandTimeout > 0)
+                {
+                    TimerCallback timerDelegate = new TimerCallback(TimeoutExpired);
+                    timer = new Timer(timerDelegate, this, this.CommandTimeout * 1000, Timeout.Infinite);
+                }
+
+                reader.BeginNextResult();
+
+                MysqlAsyncResult result = asyncResult as MysqlAsyncResult;
+                result.DataReader = reader;
+            }
+
+            catch (MySqlException ex)
+            {
+                if (ex.IsFatal)
+                    Connection.Close();
+                if (ex.Number == 0)
+                    throw new MySqlException(Resources.FatalErrorDuringExecute, ex);
+                throw;
+            }
+        }
+
+        private void InnerEndExecuteReader(IAsyncResult asyncResult)
+        {
+            try
+            {
+                MysqlAsyncResult result = asyncResult as MysqlAsyncResult;
+                result.DataReader.EndNextResult();
+                connection.Reader = result.DataReader;
+            }
+            catch (Exception ex)
+            { 
+            
+            }
         }
 #region NoQuery,Scalar
         public IAsyncResult BeginExecuteNonQuery()

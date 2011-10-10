@@ -10,6 +10,7 @@ namespace MySql.Data.MySqlClient
 
         /// <summary>
         /// 暂不支持，做了也没意义
+        /// throw NotImplementedException
         /// </summary>
         public System.Threading.WaitHandle AsyncWaitHandle
         {

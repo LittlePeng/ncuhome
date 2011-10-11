@@ -231,6 +231,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Content Include="readme.txt" />
     <Content Include="Source\docs\MySqlCommand.xml" />
     <Content Include="Source\docs\MySqlCommandBuilder.xml" />
     <Content Include="Source\docs\MySqlConnection.xml" />

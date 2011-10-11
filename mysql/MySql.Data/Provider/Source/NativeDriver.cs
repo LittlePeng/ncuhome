@@ -88,7 +88,6 @@ namespace MySql.Data.MySqlClient
             }
         }
 
-
         /// <summary>
         /// ExecuteCommand does the work of writing the actual command bytes to the writer
         /// We break it out into a function since it is used in several places besides query
@@ -594,16 +593,16 @@ namespace MySql.Data.MySqlClient
             }
             return fieldCount;
         }
+        #region Async
+        public override void BeginPeekResult(AsyncCallback callback, object stateObject)
+        {
+            // if there is not another query or resultset, then return -1
+            if ((serverStatus & (ServerStatusFlags.AnotherQuery | ServerStatusFlags.MoreResults)) == 0)
+                return ;
 
-        public void BeginReadResult(MySqlCommand cmd)
-        { 
-        
+            stream.BeginPeekPacket(callback, stateObject);
         }
-
-        public long EndReadResult(ref ulong affectedRows, ref long lastInsertId)
-        { 
-        
-        }
+        #endregion 
         /// <summary>
         /// Sends the specified file to the server. 
         /// This supports the LOAD DATA LOCAL INFILE

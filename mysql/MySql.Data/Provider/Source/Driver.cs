@@ -335,8 +335,11 @@ namespace MySql.Data.MySqlClient
         public abstract void Reset();
         public abstract void Query(byte[] bytes, int length);
         public abstract long ReadResult(ref ulong affectedRows, ref long lastInsertId);
-        public abstract long BeginReadResult(MySqlCommand  cmd);
-        public abstract long EndReadResult(ref ulong affectedRows, ref long lastInsertId);
+        /// <summary>
+        /// 异步的Peek结果集，结果集开始返回时，callback
+        /// </summary>
+        public abstract void BeginPeekResult(AsyncCallback callback, object stateObject);
+
         public abstract bool FetchDataRow(int statementId, int pageSize, int columns);
         public abstract bool SkipDataRow();
         public abstract IMySqlValue ReadColumnValue(int index, MySqlField field, IMySqlValue value);

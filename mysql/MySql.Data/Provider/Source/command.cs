@@ -49,7 +49,6 @@ namespace MySql.Data.MySqlClient
 		UpdateRowSource updatedRowSource;
 		MySqlParameterCollection parameters;
 		private int cursorPageSize;
-		private IAsyncResult asyncResult;
 		private bool designTimeVisible;
 		internal Int64 lastInsertedId;
 		private PreparableStatement statement;
@@ -538,17 +537,24 @@ namespace MySql.Data.MySqlClient
 
 		#region Async Methods
 		internal Exception thrownException;
-        private IAsyncResult _cmdAsyncResult;
-        public IAsyncResult CmdAsyncResult { get { return _cmdAsyncResult; } }
-        private AsyncCallback _cmdAsyncCallback;
-        public AsyncCallback CmdAsyncCallback { get { return _cmdAsyncCallback; } }
+
+        private IAsyncResult _asyncResult;
+        private AsyncCallback _asyncCallback;
+        private bool _isAsync = false;
+
+        public IAsyncResult CmdAsyncResult { get { return _asyncResult; } }
+        public AsyncCallback CmdAsyncCallback { get { return _asyncCallback; } }
+        public bool IsAsync { get { return _isAsync; } }
 
         public IAsyncResult BeginExecuteReader(AsyncCallback callback, object stateObject, CommandBehavior behavior) {
             MysqlAsyncResult result = new MysqlAsyncResult();
             result.AsyncState = stateObject;
 
-            _cmdAsyncCallback = callback;
-            _cmdAsyncResult = result;
+            _asyncCallback = callback;
+            _asyncResult = result;
+            _isAsync = true;
+            
+            InnerBeginExecuteReader(behavior);
 
             return result;
         }
@@ -630,17 +636,16 @@ namespace MySql.Data.MySqlClient
 
                 reader.BeginNextResult();
 
-                MysqlAsyncResult result = asyncResult as MysqlAsyncResult;
+                MysqlAsyncResult result = _asyncResult as MysqlAsyncResult;
                 result.DataReader = reader;
             }
-
             catch (MySqlException ex)
             {
                 if (ex.IsFatal)
                     Connection.Close();
                 if (ex.Number == 0)
                     throw new MySqlException(Resources.FatalErrorDuringExecute, ex);
-                throw;
+                throw ex;
             }
         }
 
@@ -652,25 +657,27 @@ namespace MySql.Data.MySqlClient
                 result.DataReader.EndNextResult();
                 connection.Reader = result.DataReader;
             }
-            catch (Exception ex)
-            { 
-            
+            catch (MySqlException ex)
+            {
+                //todo
+                throw ex;
             }
         }
-#region NoQuery,Scalar
+
+        #region NoQuery,Scalar
         public IAsyncResult BeginExecuteNonQuery()
         {
-            return BeginExecuteNonQuery(null, null, CommandBehavior.CloseConnection);
+            return BeginExecuteNonQuery(null, null, CommandBehavior.Default);
         }
 
         public IAsyncResult BeginExecuteNonQuery(AsyncCallback callback)
         {
-            return BeginExecuteNonQuery(callback, null, CommandBehavior.CloseConnection);
+            return BeginExecuteNonQuery(callback, null, CommandBehavior.Default);
         }
 
 		public IAsyncResult BeginExecuteNonQuery(AsyncCallback callback, object stateObject)
 		{
-            return BeginExecuteNonQuery(callback, stateObject, CommandBehavior.CloseConnection);
+            return BeginExecuteNonQuery(callback, stateObject, CommandBehavior.Default);
 		}
 
         public IAsyncResult BeginExecuteNonQuery(AsyncCallback callback, object stateObject, CommandBehavior behavior)

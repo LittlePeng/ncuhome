@@ -22,6 +22,7 @@ using System;
 using System.Data;
 using MySql.Data.MySqlClient;
 using NUnit.Framework;
+using System.Threading;
 
 namespace MySql.Data.MySqlClient.Tests
 {
@@ -95,6 +96,42 @@ namespace MySql.Data.MySqlClient.Tests
             {
             }
         }
+        [Test]
+        public void BeginAsyncExecuteNonQuery()
+        {
+            if (version < new Version(5, 0)) return;
+
+            execSQL("CREATE TABLE test (id int)");
+            execSQL("CREATE PROCEDURE spTest() BEGIN SET @x=0; REPEAT INSERT INTO test VALUES(@x); " +
+                "SET @x=@x+1; UNTIL @x = 300 END REPEAT; END");
+
+            try
+            {
+                MySqlCommand proc = new MySqlCommand("spTest", conn);
+                proc.CommandType = CommandType.StoredProcedure;
+                IAsyncResult iar = proc.BeginExecuteNonQuery(EndAsyncExecuteNonQuery,proc);
+                _waitHandle.WaitOne();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+            finally
+            {
+            }
+        }
+
+        private void EndAsyncExecuteNonQuery(IAsyncResult result)
+        {
+            MySqlCommand proc = result.AsyncState as MySqlCommand;
+            proc.EndExecuteNonQuery(result);
+
+            proc.CommandType = CommandType.Text;
+            proc.CommandText = "SELECT COUNT(*) FROM test;";
+            object cnt = proc.ExecuteScalar();
+            Assert.AreEqual(300, cnt);
+            _waitHandle.Set();
+        }
 
         [Test]
         public void ExecuteReader()
@@ -141,6 +178,42 @@ namespace MySql.Data.MySqlClient.Tests
                 if (reader != null)
                     reader.Close();
             }
+        }
+
+        [Test]
+        public void BeginExecuteReader()
+        {
+            if (version < new Version(5, 0)) return;
+
+            execSQL("CREATE TABLE test (id int)");
+            execSQL("CREATE PROCEDURE spTest() BEGIN INSERT INTO test VALUES(1); " +
+                "SELECT SLEEP(2); SELECT 'done'; END");
+
+            MySqlCommand proc = new MySqlCommand("spTest", conn);
+            proc.CommandType = CommandType.StoredProcedure;
+            IAsyncResult iar = proc.BeginExecuteReader(EndExecuteReader, proc, CommandBehavior.Default);
+            _waitHandle.WaitOne();
+        }
+
+        private AutoResetEvent _waitHandle = new AutoResetEvent(false);
+
+        private void EndExecuteReader(IAsyncResult result)
+        {
+            MySqlCommand proc = result.AsyncState as MySqlCommand;
+
+            MySqlDataReader reader = proc.EndExecuteReader(result);
+            Assert.IsNotNull(reader);
+            Assert.IsTrue(reader.Read(), "can read");
+            Assert.IsTrue(reader.NextResult());
+            Assert.IsTrue(reader.Read());
+            Assert.AreEqual("done", reader.GetString(0));
+            reader.Close();
+
+            proc.CommandType = CommandType.Text;
+            proc.CommandText = "SELECT COUNT(*) FROM test";
+            object cnt = proc.ExecuteScalar();
+            Assert.AreEqual(1, cnt);
+            _waitHandle.Set();
         }
 
         [Test]

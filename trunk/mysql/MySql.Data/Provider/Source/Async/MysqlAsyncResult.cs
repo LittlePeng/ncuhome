@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace MySql.Data.MySqlClient
 {
@@ -8,13 +9,15 @@ namespace MySql.Data.MySqlClient
     {
         public object AsyncState { get; set; }
 
-        /// <summary>
-        /// 暂不支持，做了也没意义
-        /// throw NotImplementedException
-        /// </summary>
-        public System.Threading.WaitHandle AsyncWaitHandle
+        public EventWaitHandle _asyncWaitHandle;
+        public WaitHandle AsyncWaitHandle
         {
-            get { throw new NotImplementedException(); }
+            get
+            {
+                if (_asyncWaitHandle == null)
+                    _asyncWaitHandle = new ManualResetEvent(false);
+                return _asyncWaitHandle;
+            }
         }
 
         public bool CompletedSynchronously

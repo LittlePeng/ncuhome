@@ -854,36 +854,24 @@ namespace MySql.Data.MySqlClient
             }
             return -1;
 		}
-
+#region Async
+        /// <summary>
+        /// 通过IOCP异步的等待结果集的应答
+        /// 不对NetWorkStream数据操作
+        /// </summary>
         internal void  BeginNextResult()
         {
-            driver.BeginReadResult(command);
+            driver.BeginPeekResult(command.CmdAsyncCallback,command.CmdAsyncResult);
         }
 
-        internal void EndNextResult()
+        /// <summary>
+        /// DB结果集已经开始返回，接下来采用同步方式（简单不改动原有逻辑、而且再使用异步也没意义了）
+        /// </summary>
+        internal bool EndNextResult()
         {
-            driver.BeginReadResult(command);
-            while (true)
-            {
-                ulong affectedRowsTemp = 0;
-                long fieldCount = driver.ReadResult(ref affectedRowsTemp, ref lastInsertId);
-                if (fieldCount > 0)
-                    return fieldCount;
-                else if (fieldCount == 0)
-                {
-                    command.lastInsertedId = lastInsertId;
-                    if (affectedRows == -1)
-                        affectedRows = (long)affectedRowsTemp;
-                    else
-                        affectedRows += (long)affectedRowsTemp;
-                }
-                else if (fieldCount == -1)
-                    if (!statement.ExecuteNext())
-                        break;
-            }
-            return -1;
+            return NextResult();
         }
-
+#endregion
 		/// <summary>
 		/// Advances the data reader to the next result, when reading the results of batch SQL statements.
 		/// </summary>

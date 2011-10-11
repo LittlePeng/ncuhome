@@ -142,7 +142,42 @@ namespace MySql.Data.MySqlClient
 		}
 
 		#endregion
+        
+        #region Async
+        class AsyncCallbackEvent
+        {
+            public AsyncCallback Callback { get; set; }
+            public object StateObject { get; set; }
 
+            public void RaiseEvent()
+            {
+                MysqlAsyncResult result = StateObject as MysqlAsyncResult;
+                result.IsCompleted = true;
+
+                if (result._asyncWaitHandle != null)
+                    result._asyncWaitHandle.Set();
+                if (Callback != null)
+                    Callback(result);
+            }
+        }
+
+        internal void BeginPeekPacket(AsyncCallback callback, object stateObject)
+        { 
+            byte[] buffer=new byte[1];
+            //BeginRead 设置buffer长度为0，不读取流中的数据，当有数据返回时callback
+            AsyncCallbackEvent obj = new AsyncCallbackEvent() { Callback = callback, StateObject = stateObject };
+            inStream.BeginRead(buffer, 0, 0, EndPeekPaceket,obj);
+        }
+
+        private void EndPeekPaceket(IAsyncResult result)
+        {
+            int readCount = inStream.EndRead(result);
+
+            AsyncCallbackEvent callback = result.AsyncState as AsyncCallbackEvent;
+            callback.RaiseEvent();
+        }
+
+        #endregion
 		#region Packet methods
 
 		/// <summary>

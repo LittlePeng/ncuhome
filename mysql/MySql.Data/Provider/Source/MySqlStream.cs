@@ -24,6 +24,7 @@ using System.Diagnostics;
 using System.Text;
 using MySql.Data.Common;
 using MySql.Data.MySqlClient.Properties;
+using System.Net.Sockets;
 
 namespace MySql.Data.MySqlClient
 {
@@ -72,6 +73,8 @@ namespace MySql.Data.MySqlClient
         public MySqlStream(Stream baseStream, Encoding encoding, bool compress)
             : this(encoding)
         {
+            //for async
+            _baseStream = baseStream as NetworkStream;
 
             inStream = new BufferedStream(baseStream);
             outStream = new BufferedStream(baseStream);
@@ -144,6 +147,7 @@ namespace MySql.Data.MySqlClient
 		#endregion
         
         #region Async
+        private NetworkStream _baseStream;
         class AsyncCallbackEvent
         {
             public AsyncCallback Callback { get; set; }
@@ -166,12 +170,18 @@ namespace MySql.Data.MySqlClient
             byte[] buffer=new byte[1];
             //BeginRead 设置buffer长度为0，不读取流中的数据，当有数据返回时callback
             AsyncCallbackEvent obj = new AsyncCallbackEvent() { Callback = callback, StateObject = stateObject };
-            inStream.BeginRead(buffer, 0, 0, EndPeekPaceket,obj);
+            //BufferStream 的BeginRead是Stream实现的同步方法，这样达不到异步效果
+            //被BufferStream 这玩意儿坑了一下···
+            //inStream.BeginRead(buffer, 0, 0, EndPeekPaceket,obj);
+
+            if (_baseStream == null)
+                throw new NotSupportedException("Async Method only support socket connection");
+            _baseStream.BeginRead(buffer, 0, 0, EndPeekPaceket, obj);
         }
 
         private void EndPeekPaceket(IAsyncResult result)
         {
-            int readCount = inStream.EndRead(result);
+            int readCount = _baseStream.EndRead(result);
 
             AsyncCallbackEvent callback = result.AsyncState as AsyncCallbackEvent;
             callback.RaiseEvent();

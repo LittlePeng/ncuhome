@@ -546,6 +546,16 @@ namespace MySql.Data.MySqlClient
         public AsyncCallback CmdAsyncCallback { get { return _asyncCallback; } }
         public bool IsAsync { get { return _isAsync; } }
 
+        public IAsyncResult BeginExecuteReader(AsyncCallback callback)
+        {
+          return  BeginExecuteReader(callback, null, CommandBehavior.Default);
+        }
+
+        public IAsyncResult BeginExecuteReader(AsyncCallback callback, object stateObject)
+        {
+            return BeginExecuteReader(callback, stateObject, CommandBehavior.Default); 
+        }
+
         public IAsyncResult BeginExecuteReader(AsyncCallback callback, object stateObject, CommandBehavior behavior) {
             MysqlAsyncResult result = new MysqlAsyncResult();
             result.AsyncState = stateObject;

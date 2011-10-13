@@ -25,9 +25,12 @@ windbg查看线程栈，线程都是在Socket.Receive，这是在干嘛？应该不是这个方法吧
 ----------------
 终于发现原来是BufferStream包装NetWorkStream造成的问题，那么的BeginRead的时候直接使用NetWorkStream解决该问题：）
 
+2011-1--13
+修改Timeout实现，但是，Kill之后返回的是OK Packet，而不是Error Packet，应该原来实现就有问题的。
+
+而且connection被关闭了??
 
 TODO：
 1.超时，还没做，貌似以前的就有问题啊···
 2.存储过程参数缓存，因为修改参数后需要重启服务解决，定时刷？缓存数量貌似也少了点啊
 3.连接池回收
-4.

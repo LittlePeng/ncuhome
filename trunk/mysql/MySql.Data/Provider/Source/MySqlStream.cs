@@ -168,14 +168,14 @@ namespace MySql.Data.MySqlClient
         internal void BeginPeekPacket(AsyncCallback callback, object stateObject)
         { 
             byte[] buffer=new byte[1];
-            //BeginRead 设置buffer长度为0，不读取流中的数据，当有数据返回时callback
+            //BeginRead 设置buffer长度为0，不读取流中的数据
             AsyncCallbackEvent obj = new AsyncCallbackEvent() { Callback = callback, StateObject = stateObject };
-            //BufferStream 的BeginRead是Stream实现的同步方法，这样达不到异步效果
-            //被BufferStream 这玩意儿坑了一下···
+            //BufferStream 的BeginRead是Stream实现的同步方法
             //inStream.BeginRead(buffer, 0, 0, EndPeekPaceket,obj);
 
             if (_baseStream == null)
                 throw new NotSupportedException("Async Method only support socket connection");
+           
             _baseStream.BeginRead(buffer, 0, 0, EndPeekPaceket, obj);
         }
 

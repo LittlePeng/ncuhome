@@ -348,7 +348,7 @@ namespace MySql.Data.MySqlClient
 			return ExecuteReader(CommandBehavior.Default);
 		}
 
-		private void TimeoutExpired(object commandObject)
+		internal void TimeoutExpired(object commandObject)
 		{
 			MySqlCommand cmd = (commandObject as MySqlCommand);
 
@@ -536,15 +536,20 @@ namespace MySql.Data.MySqlClient
 		#endregion
 
 		#region Async Methods
-		internal Exception thrownException;
-
         private IAsyncResult _asyncResult;
         private AsyncCallback _asyncCallback;
         private bool _isAsync = false;
+        private DateTime _beginTransTime;
 
-        public IAsyncResult CmdAsyncResult { get { return _asyncResult; } }
-        public AsyncCallback CmdAsyncCallback { get { return _asyncCallback; } }
-        public bool IsAsync { get { return _isAsync; } }
+        internal DateTime BeginTransTime { get { return _beginTransTime; } }
+        internal IAsyncResult CmdAsyncResult { get { return _asyncResult; } }
+        internal AsyncCallback CmdAsyncCallback { get { return _asyncCallback; } }
+        internal bool IsAsync { get { return _isAsync; } }
+
+        public IAsyncResult BeginExecuteReader()
+        {
+            return BeginExecuteReader(null, null, CommandBehavior.Default);
+        }
 
         public IAsyncResult BeginExecuteReader(AsyncCallback callback)
         {
@@ -563,7 +568,8 @@ namespace MySql.Data.MySqlClient
             _asyncCallback = callback;
             _asyncResult = result;
             _isAsync = true;
-            
+            _beginTransTime = DateTime.Now;
+
             InnerBeginExecuteReader(behavior);
 
             return result;
@@ -574,6 +580,7 @@ namespace MySql.Data.MySqlClient
             if (!result.IsCompleted)
                 result.AsyncWaitHandle.WaitOne();
 
+            ExecuteQueryManager.Instace.Remove(this);
             InnerEndExecuteReader(result);
 
             return connection.Reader;
@@ -623,7 +630,6 @@ namespace MySql.Data.MySqlClient
 
             updatedRowCount = -1;
 
-            Timer timer = null;
             try
             {
                 MySqlDataReader reader = new MySqlDataReader(this, statement, behavior);
@@ -635,13 +641,10 @@ namespace MySql.Data.MySqlClient
                 // execute the statement
                 statement.Execute();
 
-                //TODO 超时需要特殊处理
                 // start a timeout timer
-                if (connection.driver.Version.isAtLeast(5, 0, 0) &&
-                     commandTimeout > 0)
+                if (connection.driver.Version.isAtLeast(5, 0, 0) &&commandTimeout > 0)
                 {
-                    TimerCallback timerDelegate = new TimerCallback(TimeoutExpired);
-                    timer = new Timer(timerDelegate, this, this.CommandTimeout * 1000, Timeout.Infinite);
+                    ExecuteQueryManager.Instace.Add(this);
                 }
 
                 reader.BeginNextResult();
@@ -655,7 +658,7 @@ namespace MySql.Data.MySqlClient
                     Connection.Close();
                 if (ex.Number == 0)
                     throw new MySqlException(Resources.FatalErrorDuringExecute, ex);
-                throw ex;
+                throw;
             }
         }
 
@@ -669,8 +672,13 @@ namespace MySql.Data.MySqlClient
             }
             catch (MySqlException ex)
             {
-                //todo
-                throw ex;
+                // if we caught an exception because of a cancel, then just return null
+                if (ex.Number == 1317)
+                {
+                    if (TimedOut)
+                        throw new MySqlException(Resources.Timeout);
+                }
+                throw;
             }
         }
 

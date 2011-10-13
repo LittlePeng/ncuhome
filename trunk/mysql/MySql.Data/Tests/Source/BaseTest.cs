@@ -80,8 +80,9 @@ namespace MySql.Data.MySqlClient.Tests
 #endif
 			if (strPort != null)
 				port = Int32.Parse(strPort);
-			if (host == null)
-				host = "localhost";
+            if (host == null)
+                host = "10.10.40.217";
+				//host = "localhost";
 			if (pipeName == null)
 				pipeName = "MYSQL";
 			if (memoryName == null)
@@ -240,7 +241,7 @@ namespace MySql.Data.MySqlClient.Tests
                 suExecSQL(String.Format("DROP DATABASE IF EXISTS `{0}`; CREATE DATABASE `{0}`", database0));
                 suExecSQL(String.Format("DROP DATABASE IF EXISTS `{0}`; CREATE DATABASE `{0}`", database1));
 
-                SetAccountPerms(false);
+              //  SetAccountPerms(false);
 
                 rootConn.ChangeDatabase(database0);
 

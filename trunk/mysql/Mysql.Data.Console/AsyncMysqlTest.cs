@@ -16,17 +16,20 @@ namespace MySql.Data.ConsoleTest
 
         public void Proc()
         {
-           
+            ThreadPool.SetMinThreads(200, 200);
+            ThreadPool.SetMaxThreads(200, 200);
+
+            Console.WriteLine("input 1 Sync Test,2 Async Test:");
+            if (Console.ReadLine() == "1")
+                CommonTest();
+            else
+                AsyncTest();
+
             ShowThreadPoolInfo();
-            //CommonTest();
-            AsyncTest();
         }
 
         private void ShowThreadPoolInfo()
         {
-            ThreadPool.SetMinThreads(200, 200);
-            ThreadPool.SetMaxThreads(200, 200);
-
             Thread th = new Thread(new ThreadStart(()=>
             {
                 while (true)
@@ -46,13 +49,16 @@ namespace MySql.Data.ConsoleTest
             {
                 for (int i = 0; i < 100; i++)
                 {
-                    Stopwatch watch = new Stopwatch();
-                    watch.Start();
-                    MySqlConnection con = new MySqlConnection(_connectinString);
-                    MySqlCommand cmd = new MySqlCommand("select sleep(5);", con);
-                    con.Open();
-                    cmd.BeginExecuteReader(EndAsyncTest, cmd);
-                    watch.Stop();
+                    ThreadPool.QueueUserWorkItem((obj) =>
+                        {
+                            Stopwatch watch = new Stopwatch();
+                            watch.Start();
+                            MySqlConnection con = new MySqlConnection(_connectinString);
+                            MySqlCommand cmd = new MySqlCommand("select sleep(10);", con);
+                            con.Open();
+                            cmd.BeginExecuteReader(EndAsyncTest, cmd);
+                            watch.Stop();
+                        });
                     //  Console.WriteLine("Begin:{0}ms", watch.ElapsedMilliseconds);
                 }
             }
@@ -69,7 +75,7 @@ namespace MySql.Data.ConsoleTest
                 ThreadPool.QueueUserWorkItem((obj) =>
                 {
                     MySqlConnection con = new MySqlConnection(_connectinString);
-                    MySqlCommand cmd = new MySqlCommand("select sleep(3);", con);
+                    MySqlCommand cmd = new MySqlCommand("select sleep(10);", con);
                     con.Open();
                     using (IDataReader reader = cmd.ExecuteReader())
                     {
@@ -99,6 +105,10 @@ namespace MySql.Data.ConsoleTest
                 reader.Close();
                 cmd.Connection.Close();
                 watch.Stop();
+
+                //wait
+                Thread.Sleep(1000);
+
             }
             catch(Exception ex)
             {

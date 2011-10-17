@@ -546,6 +546,9 @@ namespace MySql.Data.MySqlClient
             return CreateCommand();
         }
 
+        /// <summary>
+        /// 回收连接
+        /// </summary>
         internal void Abort()
         {
             try

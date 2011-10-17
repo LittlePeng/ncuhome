@@ -81,8 +81,8 @@ namespace MySql.Data.MySqlClient.Tests
 			if (strPort != null)
 				port = Int32.Parse(strPort);
             if (host == null)
-                host = "10.10.40.217";
-				//host = "localhost";
+                //host = "10.10.40.217";
+				host = "localhost";
 			if (pipeName == null)
 				pipeName = "MYSQL";
 			if (memoryName == null)

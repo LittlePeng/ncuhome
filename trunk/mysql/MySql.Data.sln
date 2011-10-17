@@ -8,6 +8,21 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mysql.Data.Console", "Mysql.Data.Console\Mysql.Data.Console.csproj", "{CC1B27F8-B248-4B86-B1A8-84DA47B374FE}"
 EndProject
 Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://10.0.1.160:8080/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Mysql.Data.Console\\Mysql.Data.Console.csproj
+		SccProjectName1 = Mysql.Data.Console
+		SccLocalPath1 = Mysql.Data.Console
+		SccProjectUniqueName2 = MySql.Data\\Provider\\MySql.Data.csproj
+		SccProjectName2 = MySql.Data/Provider
+		SccLocalPath2 = MySql.Data\\Provider
+		SccProjectUniqueName3 = MySql.Data\\Tests\\MySql.Data.Tests.csproj
+		SccProjectName3 = MySql.Data/Tests
+		SccLocalPath3 = MySql.Data\\Tests
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms

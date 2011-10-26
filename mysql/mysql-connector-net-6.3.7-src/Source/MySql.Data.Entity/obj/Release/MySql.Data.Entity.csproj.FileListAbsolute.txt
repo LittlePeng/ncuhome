@@ -1,0 +1,10 @@
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Source\MySql.Data.Entity\bin\Release\MySql.Data.Entity.dll
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Source\MySql.Data.Entity\bin\Release\MySql.Data.Entity.pdb
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Source\MySql.Data.Entity\bin\Release\MySql.Data.dll
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Source\MySql.Data.Entity\bin\Release\MySql.Data.pdb
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Source\MySql.Data.Entity\obj\Release\ResolveAssemblyReference.cache
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Source\MySql.Data.Entity\obj\Release\MySql.Data.Entity.Properties.Resources.resources
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Source\MySql.Data.Entity\obj\Release\GenerateResource.read.1.tlog
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Source\MySql.Data.Entity\obj\Release\GenerateResource.write.1.tlog
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Source\MySql.Data.Entity\obj\Release\MySql.Data.Entity.dll
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Source\MySql.Data.Entity\obj\Release\MySql.Data.Entity.pdb

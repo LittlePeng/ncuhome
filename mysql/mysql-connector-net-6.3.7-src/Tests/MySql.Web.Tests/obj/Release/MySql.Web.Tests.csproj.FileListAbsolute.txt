@@ -1,0 +1,14 @@
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\bin\Release\MySql.Web.Tests.dll.config
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\bin\Release\MySql.Web.Tests.dll
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\bin\Release\MySql.Web.Tests.pdb
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\bin\Release\MySql.Data.dll
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\bin\Release\MySql.Data.Tests.dll
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\bin\Release\MySql.Web.dll
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\bin\Release\nunit.framework.dll
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\bin\Release\MySql.Data.pdb
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\bin\Release\MySql.Data.Tests.pdb
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\bin\Release\MySql.Web.pdb
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\bin\Release\nunit.framework.xml
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\obj\Release\ResolveAssemblyReference.cache
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\obj\Release\MySql.Web.Tests.dll
+D:\TFS\SSV4.X\src_V4.3\reference\mysql-connector-net\mysql-connector-net-6.3.7-src\Tests\MySql.Web.Tests\obj\Release\MySql.Web.Tests.pdb
